@@ -276,7 +276,7 @@ input[type=text], input[type=number],input[type=textarea],input[type=date],input
                 <div class="card" style="box-shadow:0px 20px 50px grey;">
                     <div class="card-header" style="background:#eaeafb;">Doctor</div>
                     <div class="card-body">
-                        <div tyle="background:#f0e8f7">
+                        <div style="background:#f0e8f7">
 
 
 				<form:form action="addDoctor" modelAttribute="doctor" method="post" style="width: 100%;">
