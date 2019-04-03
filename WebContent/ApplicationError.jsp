@@ -20,13 +20,14 @@
 <style>
 
 /*Common Dashboard CSS*/
-
-@import	"https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+@import
+	"https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 body {
 	font-family: 'Poppins', sans-serif;
 	background: #fafafa
 }
+
 p {
 	font-family: 'Poppins', sans-serif;
 	font-size: 1.1em;
@@ -34,11 +35,13 @@ p {
 	line-height: 1.7em;
 	color: #0a0a0f;
 }
+
 a, a:hover, a:focus {
 	color: inherit;
 	text-decoration: none;
 	transition: all 0.3s;
 }
+
 .navbar {
 	padding: 15px 10px;
 	background: #fff;
@@ -47,57 +50,68 @@ a, a:hover, a:focus {
 	margin-bottom: 40px;
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
+
 .navbar-btn {
 	box-shadow: none;
 	outline: none !important;
 	border: none;
 }
+
 .line {
 	width: 100%;
 	height: 1px;
 	border-bottom: 1px dashed #ddd;
 }
+
 #sidebar {
 	min-width: 250px;
 	max-width: 250px;
 	background: #7386D5;
 	color: #fff;
 	transition: all 0.3s;
-	height:100;
-	
+	height: 100;
 }
+
 #sidebar.active {
 	margin-left: -250px;
 }
+
 #sidebar .sidebar-header {
 	padding: 20px;
 	background: #6d7fcc;
 }
+
 #sidebar ul.components {
 	padding: 20px 0px;
 	border-bottom: 1px solid #47748b;
 }
+
 #sidebar ul p {
 	padding: 10px;
 	font-size: 1.1em;
 	display: block;
 }
+
 #sidebar ul li a {
 	padding: 10px;
 	font-size: 1.1em;
 	display: block;
 }
+
 #sidebar ul li a:hover {
 	color: #7386D5;
 	background: #fff;
 }
+
 #sidebar ul li.active>a, a[aria-expanded="true"] {
 	color: #fff;
 	background: #6d7fcc;
 }
+
 a[data-toggle="collapse"] {
 	position: relative;
 }
+
 .dropdown-toggle::after {
 	display: block;
 	position: absolute;
@@ -105,14 +119,17 @@ a[data-toggle="collapse"] {
 	right: 20px;
 	transform: translateY(-50%);
 }
+
 ul ul a {
 	font-size: 0.9em !important;
 	padding-left: 30px !important;
 	background: #6d7fcc;
 }
+
 ul.CTAs {
 	padding: 20px;
 }
+
 ul.CTAs a {
 	text-align: center;
 	font-size: 0.9em !important;
@@ -120,20 +137,24 @@ ul.CTAs a {
 	border-radius: 5px;
 	margin-bottom: 5px;
 }
+
 a.download {
 	background: #fff;
 	color: #7386D5;
 }
+
 a.article, a.article:hover {
 	background: #6d7fcc !important;
 	color: #fff !important;
 }
+
 #content {
 	width: 100%;
 	padding: 20px;
 	min-height: 100vh;
 	transition: all 0.3s;
 }
+
 @media ( maz-width :768px) {
 	#sidebar {
 		margin-left: -250px;
@@ -145,17 +166,18 @@ a.article, a.article:hover {
 		display: none;
 	}
 }
-.btn-project{
+
+.btn-project {
 	font-family: 'Poppins', sans-serif;
 	background: #7386D5;
 	color: #fff;
 	transition: all 0.3s;
 }
+
 .btn:hover {
-  opacity: 1.5;
+	opacity: 1.5;
 }
 /*Common Dashboard CSS*/
-
 body {
 	background-image:
 		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAxMC8yOS8xMiKqq3kAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzVxteM2AAABHklEQVRIib2Vyw6EIAxFW5idr///Qx9sfG3pLEyJ3tAwi5EmBqRo7vHawiEEERHS6x7MTMxMVv6+z3tPMUYSkfTM/R0fEaG2bbMv+Gc4nZzn+dN4HAcREa3r+hi3bcuu68jLskhVIlW073tWaYlQ9+F9IpqmSfq+fwskhdO/AwmUTJXrOuaRQNeRkOd5lq7rXmS5InmERKoER/QMvUAPlZDHcZRhGN4CSeGY+aHMqgcks5RrHv/eeh455x5KrMq2yHQdibDO6ncG/KZWL7M8xDyS1/MIO0NJqdULLS81X6/X6aR0nqBSJcPeZnlZrzN477NKURn2Nus8sjzmEII0TfMiyxUuxphVWjpJkbx0btUnshRihVv70Bv8ItXq6Asoi/ZiCbU6YgAAAABJRU5ErkJggg==);
@@ -220,7 +242,7 @@ body {
 					<div class="error-details">Sorry, an error has occured,
 						Requested page not found!</div>
 					<div class="error-actions">
-						<a href="" class="btn btn-project btn-lg"><span
+						<a href="logout" class="btn btn-project btn-lg"><span
 							class="glyphicon glyphicon-home"></span>Take Me Home </a> <a href="#"
 							class="btn btn-default btn-lg"><span
 							class="glyphicon glyphicon-envelope"></span> Contact Support </a>

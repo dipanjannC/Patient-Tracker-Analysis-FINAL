@@ -1,8 +1,8 @@
 <%@page import="com.pta.model.ClerkPOJO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
-    
+	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -17,17 +17,20 @@
 <link rel="stylesheet" href="dashboard.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 
 
 <style>
 /*Common Dashboard CSS*/
 @import
 	"https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
 body {
 	font-family: 'Poppins', sans-serif;
 	background: #fafafa
 }
+
 p {
 	font-family: 'Poppins', sans-serif;
 	font-size: 1.1em;
@@ -35,11 +38,13 @@ p {
 	line-height: 1.7em;
 	color: #0a0a0f;
 }
+
 a, a:hover, a:focus {
 	color: inherit;
 	text-decoration: none;
 	transition: all 0.3s;
 }
+
 .navbar {
 	padding: 15px 10px;
 	background: #fff;
@@ -48,57 +53,68 @@ a, a:hover, a:focus {
 	margin-bottom: 40px;
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
+
 .navbar-btn {
 	box-shadow: none;
 	outline: none !important;
 	border: none;
 }
+
 .line {
 	width: 100%;
 	height: 1px;
 	border-bottom: 1px dashed #ddd;
 }
+
 #sidebar {
 	min-width: 250px;
 	max-width: 250px;
 	background: #7386D5;
 	color: #fff;
 	transition: all 0.3s;
-	height:100;
-	
+	height: 100;
 }
+
 #sidebar.active {
 	margin-left: -250px;
 }
+
 #sidebar .sidebar-header {
 	padding: 20px;
 	background: #6d7fcc;
 }
+
 #sidebar ul.components {
 	padding: 20px 0px;
 	border-bottom: 1px solid #47748b;
 }
+
 #sidebar ul p {
 	padding: 10px;
 	font-size: 1.1em;
 	display: block;
 }
+
 #sidebar ul li a {
 	padding: 10px;
 	font-size: 1.1em;
 	display: block;
 }
+
 #sidebar ul li a:hover {
 	color: #7386D5;
 	background: #fff;
 }
+
 #sidebar ul li.active>a, a[aria-expanded="true"] {
 	color: #fff;
 	background: #6d7fcc;
 }
+
 a[data-toggle="collapse"] {
 	position: relative;
 }
+
 .dropdown-toggle::after {
 	display: block;
 	position: absolute;
@@ -106,14 +122,17 @@ a[data-toggle="collapse"] {
 	right: 20px;
 	transform: translateY(-50%);
 }
+
 ul ul a {
 	font-size: 0.9em !important;
 	padding-left: 30px !important;
 	background: #6d7fcc;
 }
+
 ul.CTAs {
 	padding: 20px;
 }
+
 ul.CTAs a {
 	text-align: center;
 	font-size: 0.9em !important;
@@ -121,20 +140,24 @@ ul.CTAs a {
 	border-radius: 5px;
 	margin-bottom: 5px;
 }
+
 a.download {
 	background: #fff;
 	color: #7386D5;
 }
+
 a.article, a.article:hover {
 	background: #6d7fcc !important;
 	color: #fff !important;
 }
+
 #content {
 	width: 100%;
 	padding: 20px;
 	min-height: 100vh;
 	transition: all 0.3s;
 }
+
 @media ( maz-width :768px) {
 	#sidebar {
 		margin-left: -250px;
@@ -146,23 +169,27 @@ a.article, a.article:hover {
 		display: none;
 	}
 }
-.btn-project{
+
+.btn-project {
 	font-family: 'Poppins', sans-serif;
 	background: #7386D5;
 	color: #fff;
 	transition: all 0.3s;
 }
+
 .btn:hover {
-  opacity: 1.5;
+	opacity: 1.5;
 }
 /*Common Dashboard CSS*/
 hr {
 	border: 1px solid #f1f1f1;
 	margin-bottom: 10px;
 }
+
 .bg {
 	background: #7386D5;
 }
+
 input[type=text], input[type=number], input[type=textarea], input[type=date],
 	input[type=email] {
 	width: 100%;
@@ -170,7 +197,6 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 	background: transparent;
 	border: none;
 }
-/* ADD PRODUCT Form*/
 </style>
 
 </head>
@@ -204,7 +230,10 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 			<nav id="sidebar"
 				style="box-shadow: 0px 20px 50px grey; border-radius: 25px;">
 				<div class="sidebar-header">
-					<h5>Hi <%=session.getAttribute("name") %>,</h5>
+					<h5>
+						Hi
+						<%=session.getAttribute("name")%>,
+					</h5>
 				</div>
 
 
@@ -223,8 +252,8 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 					<li><a href="listAllDoctor">Doctor</a></li>
 					<li><a href="listAllPatient">Patient</a></li>
 					<li><a href="listAllMedicine">Medicine</a></li>
-					<li><a href="#">Prescription</a></li>
-					<li><a href="#">Bill</a></li>
+					<li><a href="listAllPrescription">Prescription</a></li>
+					<li><a href="listAllBill">Bill</a></li>
 					<li><a href="#pageSubmenu" data-toggle="collapse"
 						aria-expanded="false" class="dropdown-toggle">About Us</a>
 						<ul class="collapse list-unstyled" id="pageSubmenu">
@@ -279,7 +308,9 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 				</div>
 			</nav>
 
-			<% ClerkPOJO pojo=(ClerkPOJO)request.getAttribute("pojo"); %>
+			<%
+				ClerkPOJO pojo = (ClerkPOJO) request.getAttribute("pojo");
+			%>
 
 			<div class="card-header" style="background: #eaeafb;">Details</div>
 			<div class="card-body">
@@ -288,29 +319,58 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 
 						<div class="card" style="width: 18rem;">
 							<img class="card-img-top " src="user.png" alt="Card image cap"
-								style="width: 78%;padding-left: 125px; padding-top: 15px; ">
+								style="width: 78%; padding-left: 125px; padding-top: 15px;">
 							<div class="card-body text-center">
-								<h4 class="card-title"><%=pojo.getFirstName() +" "+pojo.getLastName() %></h4>
-								<p class="card-text text-center"><%=pojo.getAge() %></p>
-								<a href="clerkUpdation?id=<%=pojo.getClerkId() %>" class="btn btn-primary">Edit Profile</a>
+								<h4 class="card-title"><%=pojo.getFirstName() + " " + pojo.getLastName()%></h4>
+								<p class="card-text text-center"><%=pojo.getAge()%></p>
+								<a href="clerkUpdation?id=<%=pojo.getClerkId()%>"
+									class="btn btn-primary">Edit Profile</a>
 							</div>
 
 						</div>
 
-                            
-						<div class="card " style="background:#e0e0eb">
-							<div class="card-header" style="background: #eaeafb;"><%=pojo.getClerkId() %></div>
-								<div class="card-body text-center">
-							    <p class="card-text text-left">Name: <%=pojo.getFirstName() +" "+pojo.getLastName() %></p>
-								<p class="card-text text-left">Gender: <%=pojo.getGender() %></p>
-								<p class="card-text text-left">Date of Birth: <%=pojo.getDateOfBirth() %></p>
-								<p class="card-text text-left">Contact No: <%=pojo.getContactNumber() %></p>
-								<p class="card-text text-left">Alternate Contact No: <%=pojo.getAlternateContactNumber() %></p>
-								<p class="card-text text-left">Email ID: <%=pojo.getEmailId() %></p>
-								<p class="card-text text-left">Address: <%=pojo.getAddressLine1() +" "+pojo.getAddressLine2() %></p>
-								<p class="card-text text-left">City: <%=pojo.getCity() %></p>
-								<p class="card-text text-left">State: <%=pojo.getState() %></p>
-								<p class="card-text text-left">Zip Code: <%=pojo.getZipCode() %></p>
+
+						<div class="card " style="background: #e0e0eb">
+							<div class="card-header" style="background: #eaeafb;"><%=pojo.getClerkId()%></div>
+							<div class="card-body text-center">
+								<p class="card-text text-left">
+									Name:
+									<%=pojo.getFirstName() + " " + pojo.getLastName()%></p>
+								<p class="card-text text-left">
+									Gender:
+									<%=pojo.getGender()%></p>
+								<p class="card-text text-left">
+									Date of Birth:
+									<%=pojo.getDateOfBirth()%></p>
+								<p class="card-text text-left">
+									Contact No:
+									<%=pojo.getContactNumber()%></p>
+
+								<%
+									if (pojo.getAlternateContactNumber() != 0) {
+								%>
+								<p class="card-text text-left">
+									Alternate Contact No:
+									<%=pojo.getAlternateContactNumber()%></p>
+								<%
+									}
+								%>
+
+								<p class="card-text text-left">
+									Email ID:
+									<%=pojo.getEmailId()%></p>
+								<p class="card-text text-left">
+									Address:
+									<%=pojo.getAddressLine1() + " " + pojo.getAddressLine2()%></p>
+								<p class="card-text text-left">
+									City:
+									<%=pojo.getCity()%></p>
+								<p class="card-text text-left">
+									State:
+									<%=pojo.getState()%></p>
+								<p class="card-text text-left">
+									Zip Code:
+									<%=pojo.getZipCode()%></p>
 							</div>
 						</div>
 
@@ -349,7 +409,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 					<hr>
 					Are you Sure? <br>
 					<hr>
-					<form action="LoginLogout" method="post">
+					<form action="logout" method="post">
 						<input type="submit" name="logout-option" value="Yes"
 							class="btn btn-content btn-block" /> <br>
 					</form>
@@ -380,12 +440,12 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 		crossorigin="anonymous"></script>
 
 	<script>
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
-        });  
-    </script>
+		$(document).ready(function() {
+			$('#sidebarCollapse').on('click', function() {
+				$('#sidebar').toggleClass('active');
+			});
+		});
+	</script>
 
 
 </body>

@@ -14,20 +14,23 @@
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="Dashboard.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+
 
 <style>
 
 /*Common Dashboard CSS*/
-
-@import	"https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+@import
+	"https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 body {
 	font-family: 'Poppins', sans-serif;
 	background: #fafafa
 }
+
 p {
 	font-family: 'Poppins', sans-serif;
 	font-size: 1.1em;
@@ -35,11 +38,13 @@ p {
 	line-height: 1.7em;
 	color: #0a0a0f;
 }
+
 a, a:hover, a:focus {
 	color: inherit;
 	text-decoration: none;
 	transition: all 0.3s;
 }
+
 .navbar {
 	padding: 15px 10px;
 	background: #fff;
@@ -48,57 +53,68 @@ a, a:hover, a:focus {
 	margin-bottom: 40px;
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
+
 .navbar-btn {
 	box-shadow: none;
 	outline: none !important;
 	border: none;
 }
+
 .line {
 	width: 100%;
 	height: 1px;
 	border-bottom: 1px dashed #ddd;
 }
+
 #sidebar {
 	min-width: 250px;
 	max-width: 250px;
 	background: #7386D5;
 	color: #fff;
 	transition: all 0.3s;
-	height:100;
-	
+	height: 100;
 }
+
 #sidebar.active {
 	margin-left: -250px;
 }
+
 #sidebar .sidebar-header {
 	padding: 20px;
 	background: #6d7fcc;
 }
+
 #sidebar ul.components {
 	padding: 20px 0px;
 	border-bottom: 1px solid #47748b;
 }
+
 #sidebar ul p {
 	padding: 10px;
 	font-size: 1.1em;
 	display: block;
 }
+
 #sidebar ul li a {
 	padding: 10px;
 	font-size: 1.1em;
 	display: block;
 }
+
 #sidebar ul li a:hover {
 	color: #7386D5;
 	background: #fff;
 }
+
 #sidebar ul li.active>a, a[aria-expanded="true"] {
 	color: #fff;
 	background: #6d7fcc;
 }
+
 a[data-toggle="collapse"] {
 	position: relative;
 }
+
 .dropdown-toggle::after {
 	display: block;
 	position: absolute;
@@ -106,14 +122,17 @@ a[data-toggle="collapse"] {
 	right: 20px;
 	transform: translateY(-50%);
 }
+
 ul ul a {
 	font-size: 0.9em !important;
 	padding-left: 30px !important;
 	background: #6d7fcc;
 }
+
 ul.CTAs {
 	padding: 20px;
 }
+
 ul.CTAs a {
 	text-align: center;
 	font-size: 0.9em !important;
@@ -121,20 +140,24 @@ ul.CTAs a {
 	border-radius: 5px;
 	margin-bottom: 5px;
 }
+
 a.download {
 	background: #fff;
 	color: #7386D5;
 }
+
 a.article, a.article:hover {
 	background: #6d7fcc !important;
 	color: #fff !important;
 }
+
 #content {
 	width: 100%;
 	padding: 20px;
 	min-height: 100vh;
 	transition: all 0.3s;
 }
+
 @media ( maz-width :768px) {
 	#sidebar {
 		margin-left: -250px;
@@ -146,24 +169,27 @@ a.article, a.article:hover {
 		display: none;
 	}
 }
-.btn-project{
+
+.btn-project {
 	font-family: 'Poppins', sans-serif;
 	background: #7386D5;
 	color: #fff;
 	transition: all 0.3s;
 }
+
 .btn:hover {
-  opacity: 1.5;
+	opacity: 1.5;
 }
 /*Common Dashboard CSS*/
-
 hr {
 	border: 1px solid #f1f1f1;
 	margin-bottom: 10px;
 }
+
 .bg {
 	background: #7386D5;
 }
+
 input[type=text], input[type=number], input[type=textarea], input[type=date],
 	input[type=email] {
 	width: 100%;
@@ -171,7 +197,6 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 	background: transparent;
 	border: none;
 }
-/* ADD PRODUCT Form*/
 </style>
 
 </head>
@@ -205,7 +230,10 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 			<nav id="sidebar"
 				style="box-shadow: 0px 20px 50px grey; border-radius: 25px;">
 				<div class="sidebar-header">
-					<h5>Hi <%=session.getAttribute("name") %>,</h5>
+					<h5>
+						Hi
+						<%=session.getAttribute("name")%>,
+					</h5>
 				</div>
 
 
@@ -225,7 +253,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 					<li><a href="listAllPatient">Patient</a></li>
 					<li><a href="listAllMedicine">Medicine</a></li>
 					<li><a href="listAllPrescription">Prescription</a></li>
-					<li><a href="#">Bill</a></li>
+					<li><a href="listAllBill">Bill</a></li>
 					<li><a href="#pageSubmenu" data-toggle="collapse"
 						aria-expanded="false" class="dropdown-toggle">About Us</a>
 						<ul class="collapse list-unstyled" id="pageSubmenu">
@@ -282,7 +310,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 
 
 
-<!-- Cards -->
+			<!-- Cards -->
 
 			<div class="card">
 				<div class="card-body">
@@ -373,8 +401,8 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 					</div>
 				</div>
 			</div>
-</div>
-			<!-- Cards -->
+		</div>
+		<!-- Cards -->
 
 	</div>
 
@@ -425,54 +453,67 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
-		
-		<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
-<script src="Dashboard.js"></script>
+
+	<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+	<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+	<script src="Dashboard.js"></script>
 	<script>
 		$(document).ready(function() {
 			$('#sidebarCollapse').on('click', function() {
 				$('#sidebar').toggleClass('active');
 			});
 		});
-		
+
 		/*Dashboard JS*/
-		
-		window.onload = function () {
-		    var options = {
-		        title: {
-		            text: "Patient Analysis Report in 2019"
-		        },
-		        subtitles: [{
-		            text: "As of March, 2019"
-		        }],
-		        animationEnabled: true,
-		        data: [{
-		            type: "pie",
-		            startAngle: 40,
-		            toolTipContent: "<b>{label}</b>: {y}%",
-		            showInLegend: "true",
-		            legendText: "{label}",
-		            indexLabelFontSize: 16,
-		            indexLabel: "{label} - {y}%",
-		            dataPoints: [
-		                { y: 48.36, label: "Cardiovascular diseases" },
-		                { y: 26.85, label: "Respiratory diseases" },
-		                { y: 1.49, label: "TB" },
-		                { y: 6.98, label: "Tumors and malignant" },
-		                { y: 6.53, label: "Digestive diseases" },
-		                { y: 2.45, label: "Fever and infections (especially malaria)" },
-		                { y: 3.32, label: "Unintentional Injuries" },
-		                { y: 4.03, label: "Diarrheal Diseases" }
-		            ]
-		        }]
-		    };
-		    $("#chartContainer").CanvasJSChart(options);
+
+		window.onload = function() {
+			var options = {
+				title : {
+					text : "Patient Analysis Report in 2019"
+				},
+				subtitles : [ {
+					text : "As of March, 2019"
+				} ],
+				animationEnabled : true,
+				data : [ {
+					type : "pie",
+					startAngle : 40,
+					toolTipContent : "<b>{label}</b>: {y}%",
+					showInLegend : "true",
+					legendText : "{label}",
+					indexLabelFontSize : 16,
+					indexLabel : "{label} - {y}%",
+					dataPoints : [ {
+						y : 48.36,
+						label : "Cardiovascular diseases"
+					}, {
+						y : 26.85,
+						label : "Respiratory diseases"
+					}, {
+						y : 1.49,
+						label : "TB"
+					}, {
+						y : 6.98,
+						label : "Tumors and malignant"
+					}, {
+						y : 6.53,
+						label : "Digestive diseases"
+					}, {
+						y : 2.45,
+						label : "Fever and infections (especially malaria)"
+					}, {
+						y : 3.32,
+						label : "Unintentional Injuries"
+					}, {
+						y : 4.03,
+						label : "Diarrheal Diseases"
+					} ]
+				} ]
+			};
+			$("#chartContainer").CanvasJSChart(options);
 		}
-		
+
 		/*Dashboard JS*/
-		
-		
 	</script>
 
 

@@ -1,8 +1,8 @@
-<%@page import="com.pta.model.PatientPOJO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
+<%@page import="com.pta.model.BillPOJO"%>
 <!DOCTYPE html>
 <html>
 
@@ -20,18 +20,14 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 
-
 <style>
-
 /*Common Dashboard CSS*/
 @import
 	"https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-
 body {
 	font-family: 'Poppins', sans-serif;
 	background: #fafafa
 }
-
 p {
 	font-family: 'Poppins', sans-serif;
 	font-size: 1.1em;
@@ -39,13 +35,11 @@ p {
 	line-height: 1.7em;
 	color: #0a0a0f;
 }
-
 a, a:hover, a:focus {
 	color: inherit;
 	text-decoration: none;
 	transition: all 0.3s;
 }
-
 .navbar {
 	padding: 15px 10px;
 	background: #fff;
@@ -54,19 +48,16 @@ a, a:hover, a:focus {
 	margin-bottom: 40px;
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
-
 .navbar-btn {
 	box-shadow: none;
 	outline: none !important;
 	border: none;
 }
-
 .line {
 	width: 100%;
 	height: 1px;
 	border-bottom: 1px dashed #ddd;
 }
-
 #sidebar {
 	min-width: 250px;
 	max-width: 250px;
@@ -75,47 +66,38 @@ a, a:hover, a:focus {
 	transition: all 0.3s;
 	height: 100;
 }
-
 #sidebar.active {
 	margin-left: -250px;
 }
-
 #sidebar .sidebar-header {
 	padding: 20px;
 	background: #6d7fcc;
 }
-
 #sidebar ul.components {
 	padding: 20px 0px;
 	border-bottom: 1px solid #47748b;
 }
-
 #sidebar ul p {
 	padding: 10px;
 	font-size: 1.1em;
 	display: block;
 }
-
 #sidebar ul li a {
 	padding: 10px;
 	font-size: 1.1em;
 	display: block;
 }
-
 #sidebar ul li a:hover {
 	color: #7386D5;
 	background: #fff;
 }
-
 #sidebar ul li.active>a, a[aria-expanded="true"] {
 	color: #fff;
 	background: #6d7fcc;
 }
-
 a[data-toggle="collapse"] {
 	position: relative;
 }
-
 .dropdown-toggle::after {
 	display: block;
 	position: absolute;
@@ -123,17 +105,14 @@ a[data-toggle="collapse"] {
 	right: 20px;
 	transform: translateY(-50%);
 }
-
 ul ul a {
 	font-size: 0.9em !important;
 	padding-left: 30px !important;
 	background: #6d7fcc;
 }
-
 ul.CTAs {
 	padding: 20px;
 }
-
 ul.CTAs a {
 	text-align: center;
 	font-size: 0.9em !important;
@@ -141,24 +120,20 @@ ul.CTAs a {
 	border-radius: 5px;
 	margin-bottom: 5px;
 }
-
 a.download {
 	background: #fff;
 	color: #7386D5;
 }
-
 a.article, a.article:hover {
 	background: #6d7fcc !important;
 	color: #fff !important;
 }
-
 #content {
 	width: 100%;
 	padding: 20px;
 	min-height: 100vh;
 	transition: all 0.3s;
 }
-
 @media ( maz-width :768px) {
 	#sidebar {
 		margin-left: -250px;
@@ -170,14 +145,12 @@ a.article, a.article:hover {
 		display: none;
 	}
 }
-
 .btn-project {
 	font-family: 'Poppins', sans-serif;
 	background: #7386D5;
 	color: #fff;
 	transition: all 0.3s;
 }
-
 .btn:hover {
 	opacity: 1.5;
 }
@@ -186,49 +159,28 @@ hr {
 	border: 1px solid #f1f1f1;
 	margin-bottom: 10px;
 }
-
 .bg {
 	background: #7386D5;
 }
-
-input[type=text], input[type=number], input[type=textarea], input[type=date],
-	input[type=email] {
-	width: 100%;
-	padding: 12px 20px;
-	background: transparent;
-	border: none;
+/*Bill CSS*/
+.invoice-title h2, .invoice-title h3 {
+	display: inline-block;
 }
+.table>tbody>tr>.no-line {
+	border-top: none;
+}
+.table>thead>tr>.no-line {
+	border-bottom: none;
+}
+.table>tbody>tr>.thick-line {
+	border-top: 2px solid;
+}
+/*Bill CSS*/
 </style>
 
 </head>
 
 <body>
-
-	<%
-		if (request.getAttribute("success") != null) {
-	%>
-
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	<script type="text/javascript">
-		swal('WELCOME PATIENT !!', "Your ID : ${patientId}", 'success')
-	</script>
-
-	<%
-		}
-	%>
-
-	<%
-		if (request.getAttribute("update") != null) {
-	%>
-
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	<script type="text/javascript">
-		swal('SUCCESSFULLY UPDATED !!', "Your ID : ${patientId}", 'success')
-	</script>
-
-	<%
-		}
-	%>
 
 	<!--Navigation Bar-->
 	<nav class="navbar navbar-expand-lg navbar-light "
@@ -337,102 +289,155 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 
 			<div class="container">
 				<div class="card" style="box-shadow: 0px 20px 50px grey;">
-					<div class="card-header" style="background: #eaeafb;">Patient</div>
+					<div class="card-header" style="background: #eaeafb;">
+						<h5>Bill</h5>
+					</div>
 					<div class="card-body">
+						
+<!-- 						Download Button
+						<div align="right">
 
-						<!-- Search and Add -->
-						<div class="container-fluid">
+							<button type="button" id="cmd"
+								class="btn btn-primary">
+								<i class="fa fa-download" style="font-size: 25px ;border-radius:50px"></i>
+							</button>
+
+
+						</div>
+						Download Button -->
+
+
+
+						<!-- Bill -->
+
+
+						<%
+									BillPOJO billDetailsPojo = (BillPOJO) request.getAttribute("billDetailsPojo");
+							
+							%>
+						<div class="container" id="content">
 							<div class="row">
+								<div class="col-lg-12">
+									<div class="invoice-title">
 
-								<!-- Search Bar-->
-								<div class="col-8">
-
-									<input class="form-control" id="input" type="text"
-										placeholder="Search"
-										style="background: #ececf9; border-radius: 80px;" />
-
-								</div>
-
-
-								<!-- Search Bar -->
-
-								<!-- Add Product Button -->
-								<div class="col-4">
-									<div align="right">
-
-										<a href="patientAddition" role="button""> <i
-											class="material-icons" style="font-size: 40px;">add_circle
-										</i>
-										</a>
+										<h5 align="right">
+											ID #
+											<%-- <%=pojo.getBillId() %> --%>${billId}</h5>
+									</div>
+									<hr>
+									<div class="row">
+										<div class="col-lg-6">
+											<address>
+												<strong>Billed To : </strong> <br>Patient ID : <%= billDetailsPojo.getPatientId() %>
+												<br> Patient : <%= billDetailsPojo.getPatientName() %>
+												<br><strong>Prescribed By : </strong> 
+												<br>Doctor ID : <%= billDetailsPojo.getDoctorId()%>
+												<br>Doctor : <%= billDetailsPojo.getDoctorName() %>
+											</address>
+										</div>
+										<div class="col-lg-6 text-right">
+											<address>
+												<strong>Bill Issue Date : </strong><br>
+												<%= billDetailsPojo.getBillDate() %><br> <br>
+											</address>
+										</div>
 									</div>
 								</div>
-								<!-- Add Product Button -->
+							</div>
+
+							<div class="row">
+								<div class="col-md-12">
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h3 class="panel-title">
+												<strong>Order summary</strong>
+											</h3>
+										</div>
+										<div class="panel-body">
+											<div class="table-responsive">
+												<table class="table table-condensed">
+													<thead>
+														<tr>
+															<td><strong>Medicines</strong></td>
+															<td class="text-center"><strong>Price</strong></td>
+															<td class="text-center"><strong>Quantity</strong></td>
+															<td class="text-right"><strong>Totals</strong></td>
+														</tr>
+
+													</thead>
+													<tbody>
+														<!-- foreach ($order->lineItems as $line) or some such thing here -->
+														<tr>
+															<td><%= billDetailsPojo.getMedicineId1() %></td>
+															<td class="text-center">Rs.<%= billDetailsPojo.getAmount1() %></td>
+															<td class="text-center"><%= billDetailsPojo.getQuantity1() %></td>
+															<td class="text-right"><%= billDetailsPojo.getTotalAmountMedicine1() %></td>
+														</tr>
+														<% if(billDetailsPojo.getMedicineId2() != null){ %>
+														<tr>
+															<td><%= billDetailsPojo.getMedicineId2() %></td>
+															<td class="text-center">Rs.<%= billDetailsPojo.getAmount2() %></td>
+															<td class="text-center"><%= billDetailsPojo.getQuantity2() %></td>
+															<td class="text-right"><%= billDetailsPojo.getTotalAmountMedicine2() %></td>
+														</tr>
+														<%} %>
+														<% if(billDetailsPojo.getMedicineId3() != null){ %>
+														<tr>
+															<td><%= billDetailsPojo.getMedicineId3() %></td>
+															<td class="text-center">Rs.<%= billDetailsPojo.getAmount3() %></td>
+															<td class="text-center"><%= billDetailsPojo.getQuantity3() %></td>
+															<td class="text-right"><%= billDetailsPojo.getTotalAmountMedicine3() %></td>
+														</tr>
+														<%} %>
+														<% if(billDetailsPojo.getMedicineId4() != null){ %>
+														<tr>
+															<td><%= billDetailsPojo.getMedicineId4() %></td>
+															<td class="text-center">Rs.<%= billDetailsPojo.getAmount4() %></td>
+															<td class="text-center"><%= billDetailsPojo.getQuantity4() %></td>
+															<td class="text-right"><%= billDetailsPojo.getTotalAmountMedicine4() %></td>
+														</tr>
+														<%} %>
+														<% if(billDetailsPojo.getMedicineId5() != null){ %>
+														<tr>
+															<td><%= billDetailsPojo.getMedicineId5() %></td>
+															<td class="text-center">Rs.<%= billDetailsPojo.getAmount5() %></td>
+															<td class="text-center"><%= billDetailsPojo.getQuantity5() %></td>
+															<td class="text-right"><%= billDetailsPojo.getTotalAmountMedicine5() %></td>
+														</tr>
+														<%} %>
+
+														<tr>
+															<td class="thick-line"></td>
+															<td class="thick-line"></td>
+															<td class="thick-line text-center"><strong>Subtotal</strong></td>
+															<td class="thick-line text-right">Rs.<%=billDetailsPojo.getTotalAmount() %></td>
+														</tr>
+
+														<tr>
+															<td class="no-line"></td>
+															<td class="no-line"></td>
+															<td class="no-line text-center"><strong>Total</strong></td>
+															<td class="no-line text-right">Rs.<%= billDetailsPojo.getTotalAmount() %></td>
+													
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
-						<!-- Search and Add -->
-						<br>
 
-						<div class="table-responsive" style="background: #f0e8f7">
-							<table id="mytable" class="table table-bordred table-striped">
+						<div id="editor"></div>
 
-								<thead>
-									<th>Patient ID</th>
-									<th>First Name</th>
-									<th>Last Name</th>
-									<th>State</th>
-									<th>Email</th>
-									<th>Contact</th>
-									<th>Edit</th>
-
-
-									<%
-										ArrayList patientDetails = (ArrayList) request.getAttribute("patientDetails");
-										Iterator iterator = patientDetails.iterator();
-										while (iterator.hasNext()) {
-											PatientPOJO pojo = (PatientPOJO) iterator.next();
-									%>
-								</thead>
-								<tbody>
-
-									<tr>
-										<td><a
-											href="viewPatientDetails?id=<%=pojo.getPatientId()%>"
-											class="btn btn-basic" role="button"><%=pojo.getPatientId()%></a></td>
-										<td><%=pojo.getFirstName()%></td>
-										<td><%=pojo.getLastName()%></td>
-										<td><%=pojo.getState()%></td>
-										<td><%=pojo.getEmailId()%></td>
-										<td><%=pojo.getContactNumber()%></td>
-										<td><a href="patientUpdation?id=<%=pojo.getPatientId()%>"
-											role="button"><i class="material-icons">mode_edit</i></a></td>
-
-										<%
-											}
-										%>
-
-									</tr>
-
-								</tbody>
-
-							</table>
-
-
-						</div>
+						<!-- Bill -->
 					</div>
 					<div class="card-footer"></div>
 				</div>
 			</div>
-
-
-
 		</div>
-
-
 	</div>
-
-
-
-
 	<!--Logout Modal-->
 	<div class="modal fade" id="logoutModal">
 		<div class="modal-dialog">
@@ -463,7 +468,6 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 	<!--Logout Modal-->
 
 
-
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -477,16 +481,29 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
-
 	<script>
 		$(document).ready(function() {
 			$('#sidebarCollapse').on('click', function() {
 				$('#sidebar').toggleClass('active');
 			});
 		});
+		
+		/* Download Generator */
+		var doc = new jsPDF();
+		var specialElementHandlers = {
+		    '#editor': function (element, renderer) {
+		        return true;
+		    }
+		};
+		$('#cmd').click(function () {   
+		    doc.fromHTML($('#content').html(), 15, 15, {
+		        'width': 170,
+		            'elementHandlers': specialElementHandlers
+		    });
+		    doc.save('sample-file.pdf');
+		});
+		/* Download Generator */
+		
 	</script>
-
-
 </body>
-
 </html>

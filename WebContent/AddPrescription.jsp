@@ -200,7 +200,6 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 	background: transparent;
 	border: none;
 }
-/* ADD PRODUCT Form*/
 </style>
 
 </head>
@@ -262,7 +261,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 					<li><a href="listAllPatient">Patient</a></li>
 					<li><a href="listAllMedicine">Medicine</a></li>
 					<li><a href="listAllPrescription">Prescription</a></li>
-					<li><a href="#">Bill</a></li>
+					<li><a href="listAllBill">Bill</a></li>
 					<li><a href="#pageSubmenu" data-toggle="collapse"
 						aria-expanded="false" class="dropdown-toggle">About Us</a>
 						<ul class="collapse list-unstyled" id="pageSubmenu">
@@ -330,8 +329,8 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 									class="form-control" style="background:lavender"
 									required="required">
 									<%
-										ArrayList patientId = (ArrayList) request.getAttribute("patientId");
-												Iterator iterator = patientId.iterator();
+										ArrayList patientIds = (ArrayList) request.getAttribute("patientIds");
+												Iterator iterator = patientIds.iterator();
 												while (iterator.hasNext()) {
 													PatientPOJO pojo = (PatientPOJO) iterator.next();
 									%>
@@ -345,8 +344,8 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 									class="form-control" style="background:lavender"
 									required="required">
 									<%
-										ArrayList doctorId = (ArrayList) request.getAttribute("doctorId");
-												Iterator iterator = doctorId.iterator();
+										ArrayList doctorIds = (ArrayList) request.getAttribute("doctorIds");
+												Iterator iterator = doctorIds.iterator();
 												while (iterator.hasNext()) {
 													DoctorPOJO pojo = (DoctorPOJO) iterator.next();
 									%>
@@ -363,8 +362,8 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 									name="medicineId1" class="form-control"
 									style="background:lavender" required="required">
 									<%
-										ArrayList medicineId = (ArrayList) request.getAttribute("medicineId");
-												Iterator iterator = medicineId.iterator();
+										ArrayList medicineIds = (ArrayList) request.getAttribute("medicineIds");
+												Iterator iterator = medicineIds.iterator();
 												while (iterator.hasNext()) {
 													MedicinePOJO pojo = (MedicinePOJO) iterator.next();
 									%>
@@ -375,15 +374,15 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 								</form:select>
 								<hr>
 								<form:input path="quantity1" type="number"
-									placeholder="Enter Medicine1 Quantity" min="1" max="10"
+									placeholder="Medicine1 Quantity" min="1" max="10"
 									name="quantity1" required="required" />
 								<hr>
 								<form:select path="medicineId2" id="medicineId2"
 									name="medicineId2" class="form-control"
 									style="background:lavender">
 									<%
-										ArrayList medicineId = (ArrayList) request.getAttribute("medicineId");
-												Iterator iterator = medicineId.iterator();
+										ArrayList medicineIds = (ArrayList) request.getAttribute("medicineIds");
+												Iterator iterator = medicineIds.iterator();
 									%>
 									<form:option value=""></form:option>
 									<%
@@ -400,14 +399,14 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 								<hr>
 								<form:input path="quantity2" type="number"
 									placeholder="Enter Medicine2 Quantity" min="0" max="10"
-									name="quantity2" />
+									name="quantity2"/>
 								<hr>
 								<form:select path="medicineId3" id="medicineId3"
 									name="medicineId3" class="form-control"
 									style="background:lavender">
 									<%
-										ArrayList medicineId = (ArrayList) request.getAttribute("medicineId");
-												Iterator iterator = medicineId.iterator();
+										ArrayList medicineIds = (ArrayList) request.getAttribute("medicineIds");
+												Iterator iterator = medicineIds.iterator();
 									%>
 									<form:option value=""></form:option>
 									<%
@@ -422,14 +421,14 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 								<hr>
 								<form:input path="quantity3" type="number"
 									placeholder="Enter Medicine3 Quantity" min="0" max="10"
-									name="quantity3" />
+									name="quantity3"/>
 								<hr>
 								<form:select path="medicineId4" id="medicineId4"
 									name="medicineId4" class="form-control"
 									style="background:lavender">
 									<%
-										ArrayList medicineId = (ArrayList) request.getAttribute("medicineId");
-												Iterator iterator = medicineId.iterator();
+										ArrayList medicineIds = (ArrayList) request.getAttribute("medicineIds");
+												Iterator iterator = medicineIds.iterator();
 									%>
 									<form:option value=""></form:option>
 									<%
@@ -444,14 +443,14 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 								<hr>
 								<form:input path="quantity4" type="number"
 									placeholder="Enter Medicine4 Quantity" min="0" max="10"
-									name="quantity4" />
+									name="quantity4"/>
 								<hr>
 								<form:select path="medicineId5" id="medicineId5"
 									name="medicineId5" class="form-control"
 									style="background:lavender">
 									<%
-										ArrayList medicineId = (ArrayList) request.getAttribute("medicineId");
-												Iterator iterator = medicineId.iterator();
+										ArrayList medicineIds = (ArrayList) request.getAttribute("medicineIds");
+												Iterator iterator = medicineIds.iterator();
 									%>
 									<form:option value=""></form:option>
 									<%
@@ -466,22 +465,23 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 								<hr>
 								<form:input path="quantity5" type="number"
 									placeholder="Enter Medicine5 Quantity" min="0" max="10"
-									name="quantity5" />
+									name="quantity5"/>
 								<hr>
 								<form:input path="otherInfo" type="textarea" name="otherInfo"
-									placeholder="Enter Other Information" />
+									maxlength="25" placeholder="Other Information"
+									required="required" />
 								<hr>
 								<form:select path="status" id="status" name="status"
 									class="form-control" style="background:lavender"
 									required="required">
-									<form:option value="Pendingbill">P</form:option>
-									<form:option value="Billed">B</form:option>
+									<form:option value="P">Bill Pending</form:option>
+									<form:option value="B">Billed</form:option>
 								</form:select>
 								<hr>
 								<div align="right">
-									<input type="submit" class="btn btn-project" value="ADD"
+									<input type="submit" class="btn btn-project" value="Add"
 										name="add"> <input type="reset" class="btn btn-danger"
-										value="Cancel">
+										value="Clear">
 								</div>
 							</form:form>
 						</div>
@@ -518,7 +518,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 					<hr>
 					Are you Sure? <br>
 					<hr>
-					<form action="LoginLogout" method="post">
+					<form action="logout" method="post">
 						<input type="submit" name="logout-option" value="Yes"
 							class="btn btn-content btn-block" /> <br>
 					</form>

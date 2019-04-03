@@ -2,11 +2,11 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@page import="com.pta.model.PrescriptionPOJO"%>
-<%@page import="java.util.ArrayList" %>
-<%@page import="java.util.Iterator" %>
-<%@page import="com.pta.model.PatientPOJO" %>
-<%@page import="com.pta.model.DoctorPOJO" %>
-<%@page import="com.pta.model.MedicinePOJO" %>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="com.pta.model.PatientPOJO"%>
+<%@page import="com.pta.model.DoctorPOJO"%>
+<%@page import="com.pta.model.MedicinePOJO"%>
 <!DOCTYPE html>
 <html>
 
@@ -28,10 +28,12 @@
 /*Common Dashboard CSS*/
 @import
 	"https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
 body {
 	font-family: 'Poppins', sans-serif;
 	background: #fafafa
 }
+
 p {
 	font-family: 'Poppins', sans-serif;
 	font-size: 1.1em;
@@ -39,11 +41,13 @@ p {
 	line-height: 1.7em;
 	color: #0a0a0f;
 }
+
 a, a:hover, a:focus {
 	color: inherit;
 	text-decoration: none;
 	transition: all 0.3s;
 }
+
 .navbar {
 	padding: 15px 10px;
 	background: #fff;
@@ -52,16 +56,19 @@ a, a:hover, a:focus {
 	margin-bottom: 40px;
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
+
 .navbar-btn {
 	box-shadow: none;
 	outline: none !important;
 	border: none;
 }
+
 .line {
 	width: 100%;
 	height: 1px;
 	border-bottom: 1px dashed #ddd;
 }
+
 #sidebar {
 	min-width: 250px;
 	max-width: 250px;
@@ -70,38 +77,47 @@ a, a:hover, a:focus {
 	transition: all 0.3s;
 	height: 100;
 }
+
 #sidebar.active {
 	margin-left: -250px;
 }
+
 #sidebar .sidebar-header {
 	padding: 20px;
 	background: #6d7fcc;
 }
+
 #sidebar ul.components {
 	padding: 20px 0px;
 	border-bottom: 1px solid #47748b;
 }
+
 #sidebar ul p {
 	padding: 10px;
 	font-size: 1.1em;
 	display: block;
 }
+
 #sidebar ul li a {
 	padding: 10px;
 	font-size: 1.1em;
 	display: block;
 }
+
 #sidebar ul li a:hover {
 	color: #7386D5;
 	background: #fff;
 }
+
 #sidebar ul li.active>a, a[aria-expanded="true"] {
 	color: #fff;
 	background: #6d7fcc;
 }
+
 a[data-toggle="collapse"] {
 	position: relative;
 }
+
 .dropdown-toggle::after {
 	display: block;
 	position: absolute;
@@ -109,14 +125,17 @@ a[data-toggle="collapse"] {
 	right: 20px;
 	transform: translateY(-50%);
 }
+
 ul ul a {
 	font-size: 0.9em !important;
 	padding-left: 30px !important;
 	background: #6d7fcc;
 }
+
 ul.CTAs {
 	padding: 20px;
 }
+
 ul.CTAs a {
 	text-align: center;
 	font-size: 0.9em !important;
@@ -124,20 +143,24 @@ ul.CTAs a {
 	border-radius: 5px;
 	margin-bottom: 5px;
 }
+
 a.download {
 	background: #fff;
 	color: #7386D5;
 }
+
 a.article, a.article:hover {
 	background: #6d7fcc !important;
 	color: #fff !important;
 }
+
 #content {
 	width: 100%;
 	padding: 20px;
 	min-height: 100vh;
 	transition: all 0.3s;
 }
+
 @media ( maz-width :768px) {
 	#sidebar {
 		margin-left: -250px;
@@ -149,12 +172,14 @@ a.article, a.article:hover {
 		display: none;
 	}
 }
+
 .btn-project {
 	font-family: 'Poppins', sans-serif;
 	background: #7386D5;
 	color: #fff;
 	transition: all 0.3s;
 }
+
 .btn:hover {
 	opacity: 1.5;
 }
@@ -163,9 +188,11 @@ hr {
 	border: 1px solid #f1f1f1;
 	margin-bottom: 10px;
 }
+
 .bg {
 	background: #7386D5;
 }
+
 input[type=text], input[type=number], input[type=textarea], input[type=date],
 	input[type=email] {
 	width: 100%;
@@ -173,16 +200,16 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 	background: transparent;
 	border: none;
 }
-/* ADD PRODUCT Form*/
 </style>
 
 </head>
 
 <body>
 
-<% java.util.Date date=new java.util.Date();
-   String fDate = new java.text.SimpleDateFormat("dd-MM-yyyy").format(date);
-%>
+	<%
+		java.util.Date date = new java.util.Date();
+		String fDate = new java.text.SimpleDateFormat("dd-MM-yyyy").format(date);
+	%>
 
 	<!--Navigation Bar-->
 	<nav class="navbar navbar-expand-lg navbar-light "
@@ -211,7 +238,10 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 			<nav id="sidebar"
 				style="box-shadow: 0px 20px 50px grey; border-radius: 25px;">
 				<div class="sidebar-header">
-					<h5>Hi <%=session.getAttribute("name") %>,</h5>
+					<h5>
+						Hi
+						<%=session.getAttribute("name")%>,
+					</h5>
 				</div>
 
 
@@ -292,142 +322,165 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 					<div class="card-body">
 						<div style="background: #f0e8f7">
 
-							<%PrescriptionPOJO prescriptionDetails = (PrescriptionPOJO)request.getAttribute("pojo"); 
+							<%
+								PrescriptionPOJO prescriptionDetails = (PrescriptionPOJO) request.getAttribute("pojo");
 								/* String id = (String) request.getAttribute("id"); */
 							%>
-							
-							<form:form action="updatePrescriptionForm" method="post" style="width: 100%;" modelAttribute="prescription">
-							
+
+							<form:form action="updatePrescription" method="post"
+								style="width: 100%;" modelAttribute="prescription">
+
 								<form:input path="requestId" type="text" name="requestId"
 									value="<%=prescriptionDetails.getRequestId()%>" readonly="true" />
 								<hr>
 								<form:input path="patientId" type="text" name="patientId"
 									value="<%=prescriptionDetails.getPatientId()%>" readonly="true" />
 								<hr>
-							    <form:input path="doctorId" type="text" name="doctorId"
+								<form:input path="doctorId" type="text" name="doctorId"
 									value="<%=prescriptionDetails.getDoctorId()%>" readonly="true" />
 								<hr>
 								<form:input path="requestDate" type="date" name="requestDate"
-									value="<%=fDate %>" readonly="true" />
+									value="<%=fDate%>" readonly="true" />
 								<hr>
-								
-								<form:select path="medicineId1" id="medicineId1" name="medicineId1"  value="<%=prescriptionDetails.getMedicineId1()%>"
+
+								<form:select path="medicineId1" id="medicineId1"
+									name="medicineId1"
+									value="<%=prescriptionDetails.getMedicineId1()%>"
 									class="form-control" style="background:lavender"
 									required="required">
 									<%
-									ArrayList medicineId = (ArrayList) request.getAttribute("medicineId");
-									Iterator iterator = medicineId.iterator();
-									
-									while(iterator.hasNext()){
-										MedicinePOJO pojo = (MedicinePOJO) iterator.next();
-									
+										ArrayList medicineIds = (ArrayList) request.getAttribute("medicineIds");
+												Iterator iterator = medicineIds.iterator();
+
+												while (iterator.hasNext()) {
+													MedicinePOJO pojo = (MedicinePOJO) iterator.next();
 									%>
-									<form:option value="<%=pojo.getMedicineId() %>"><%=pojo.getMedicineId() %></form:option>
-									<%} %>
+									<form:option value="<%=pojo.getMedicineId()%>"><%=pojo.getMedicineId()%></form:option>
+									<%
+										}
+									%>
 								</form:select>
 								<hr>
 								<form:input path="quantity1" type="text"
-									value="<%=prescriptionDetails.getQuantity1()%>" min="1" max="10" name="quantity1" placeholder="Enter Medicine1 Quantity"
+									value="<%=prescriptionDetails.getQuantity1()%>" min="1"
+									max="10" name="quantity1" placeholder="Medicine1 Quantity"
 									required="required" />
 								<hr>
-								<form:select path="medicineId2" id="medicineId2" name="medicineId2" value="<%=prescriptionDetails.getMedicineId2()%>"
+								<form:select path="medicineId2" id="medicineId2"
+									name="medicineId2"
+									value="<%=prescriptionDetails.getMedicineId2()%>"
 									class="form-control" style="background:lavender"
-									>
+									required="required">
 									<%
-									ArrayList medicineId = (ArrayList) request.getAttribute("medicineId");
-									Iterator iterator = medicineId.iterator();
+										ArrayList medicineIds = (ArrayList) request.getAttribute("medicineIds");
+												Iterator iterator = medicineIds.iterator();
 									%>
 									<form:option value=""></form:option>
 									<%
-									while(iterator.hasNext()){
-										MedicinePOJO pojo = (MedicinePOJO) iterator.next();
-									
+										while (iterator.hasNext()) {
+													MedicinePOJO pojo = (MedicinePOJO) iterator.next();
 									%>
-									<form:option value="<%=pojo.getMedicineId() %>"><%=pojo.getMedicineId() %></form:option>
-									<%} %>
+									<form:option value="<%=pojo.getMedicineId()%>"><%=pojo.getMedicineId()%></form:option>
+									<%
+										}
+									%>
 								</form:select>
 								<hr>
 								<form:input path="quantity2" type="text"
-									value="<%=prescriptionDetails.getQuantity2()%>" min="0" max="10" name="quantity2" placeholder="Enter Medicine2 Quantity"
-									 />
+									value="<%=prescriptionDetails.getQuantity2()%>" min="0"
+									max="10" name="quantity2" placeholder="Medicine2 Quantity"
+									required="required" />
 								<hr>
-								<form:select path="medicineId3" id="medicineId3" name="medicineId3" value="<%=prescriptionDetails.getMedicineId3()%>"
+								<form:select path="medicineId3" id="medicineId3"
+									name="medicineId3"
+									value="<%=prescriptionDetails.getMedicineId3()%>"
 									class="form-control" style="background:lavender"
-									>
+									required="required">
 									<%
-									ArrayList medicineId = (ArrayList) request.getAttribute("medicineId");
-									Iterator iterator = medicineId.iterator();
+										ArrayList medicineIds = (ArrayList) request.getAttribute("medicineIds");
+												Iterator iterator = medicineIds.iterator();
 									%>
 									<form:option value=""></form:option>
 									<%
-									while(iterator.hasNext()){
-										MedicinePOJO pojo = (MedicinePOJO) iterator.next();
-									
+										while (iterator.hasNext()) {
+													MedicinePOJO pojo = (MedicinePOJO) iterator.next();
 									%>
-									<form:option value="<%=pojo.getMedicineId() %>"><%=pojo.getMedicineId() %></form:option>
-									<%} %>
+									<form:option value="<%=pojo.getMedicineId()%>"><%=pojo.getMedicineId()%></form:option>
+									<%
+										}
+									%>
 								</form:select>
 								<hr>
 								<form:input path="quantity3" type="text"
-									value="<%=prescriptionDetails.getQuantity3()%>" min="0" max="10" name="quantity3" placeholder="Enter Medicine3 Quantity"
-									 />
+									value="<%=prescriptionDetails.getQuantity3()%>" min="0"
+									max="10" name="quantity3" placeholder="Medicine3 Quantity"
+									required="required" />
 								<hr>
-								<form:select path="medicineId4" id="medicineId4" name="medicineId4" value="<%=prescriptionDetails.getMedicineId4()%>"
+								<form:select path="medicineId4" id="medicineId4"
+									name="medicineId4"
+									value="<%=prescriptionDetails.getMedicineId4()%>"
 									class="form-control" style="background:lavender"
-									>
+									required="required">
 									<%
-									ArrayList medicineId = (ArrayList) request.getAttribute("medicineId");
-									Iterator iterator = medicineId.iterator();
+										ArrayList medicineIds = (ArrayList) request.getAttribute("medicineIds");
+												Iterator iterator = medicineIds.iterator();
 									%>
 									<form:option value=""></form:option>
 									<%
-									while(iterator.hasNext()){
-										MedicinePOJO pojo = (MedicinePOJO) iterator.next();
-									
+										while (iterator.hasNext()) {
+													MedicinePOJO pojo = (MedicinePOJO) iterator.next();
 									%>
-									<form:option value="<%=pojo.getMedicineId() %>"><%=pojo.getMedicineId() %></form:option>
-									<%} %>
+									<form:option value="<%=pojo.getMedicineId()%>"><%=pojo.getMedicineId()%></form:option>
+									<%
+										}
+									%>
 								</form:select>
 								<hr>
 								<form:input path="quantity4" type="text"
-									value="<%=prescriptionDetails.getQuantity4()%>" min="0" max="10" name="quantity4" placeholder="Enter Medicine4 Quantity"
-									 />
+									value="<%=prescriptionDetails.getQuantity4()%>" min="0"
+									max="10" name="quantity4" placeholder="Medicine4 Quantity"
+									required="required" />
 								<hr>
-								<form:select path="medicineId5" id="medicineId5" name="medicineId5" value="<%=prescriptionDetails.getMedicineId5()%>"
+								<form:select path="medicineId5" id="medicineId5"
+									name="medicineId5"
+									value="<%=prescriptionDetails.getMedicineId5()%>"
 									class="form-control" style="background:lavender"
-									>
+									required="required">
 									<%
-									ArrayList medicineId = (ArrayList) request.getAttribute("medicineId");
-									Iterator iterator = medicineId.iterator();
+										ArrayList medicineIds = (ArrayList) request.getAttribute("medicineIds");
+												Iterator iterator = medicineIds.iterator();
 									%>
 									<form:option value=""></form:option>
 									<%
-									while(iterator.hasNext()){
-										MedicinePOJO pojo = (MedicinePOJO) iterator.next();
-									
+										while (iterator.hasNext()) {
+													MedicinePOJO pojo = (MedicinePOJO) iterator.next();
 									%>
-									<form:option value="<%=pojo.getMedicineId() %>"><%=pojo.getMedicineId() %></form:option>
-									<%} %>
+									<form:option value="<%=pojo.getMedicineId()%>"><%=pojo.getMedicineId()%></form:option>
+									<%
+										}
+									%>
 								</form:select>
 								<hr>
 								<form:input path="quantity5" type="text"
-									value="<%=prescriptionDetails.getQuantity5()%>" min="0" max="10" name="quantity5" placeholder="Enter Medicine5 Quantity"
-									 />
+									value="<%=prescriptionDetails.getQuantity5()%>" min="0"
+									max="10" name="quantity5" placeholder="Medicine5 Quantity"
+									required="required" />
 								<hr>
-								<form:input path="otherInfo" type="textarea" name="otherInfo" value="<%=prescriptionDetails.getOtherInfo()%>"
-									  />
+								<form:input path="otherInfo" type="textarea" name="otherInfo"
+									maxlength="25" value="<%=prescriptionDetails.getOtherInfo()%>"
+									placeholder="Other Information" required="required" />
 								<hr>
-                                <form:select path="status" id="status" name="status"
+								<form:select path="status" id="status" name="status"
 									class="form-control" style="background:lavender"
 									required="required">
-									<form:option value="Pendingbill">P</form:option>
-									<form:option value="Billed">B</form:option>
+									<form:option value="P">Bill Pending</form:option>
+									<form:option value="B">Billed</form:option>
 								</form:select>
 								<hr>
 								<div align="right">
-									<input type="submit" class="btn btn-project" value="UPDATE"
+									<input type="submit" class="btn btn-project" value="Update"
 										name="add"> <input type="reset" class="btn btn-danger"
-										value="Cancel">
+										value="Clear">
 								</div>
 							</form:form>
 						</div>
@@ -495,12 +548,12 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 		crossorigin="anonymous"></script>
 
 	<script>
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
-        });  
-    </script>
+		$(document).ready(function() {
+			$('#sidebarCollapse').on('click', function() {
+				$('#sidebar').toggleClass('active');
+			});
+		});
+	</script>
 
 
 </body>

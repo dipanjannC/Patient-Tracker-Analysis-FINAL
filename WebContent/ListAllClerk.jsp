@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@page import="java.util.ArrayList" %>
-<%@page import="java.util.Iterator" %>
-<%@page import="com.pta.model.ClerkPOJO" %>
+	pageEncoding="ISO-8859-1"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="com.pta.model.ClerkPOJO"%>
 <!DOCTYPE html>
 <html>
 
@@ -17,18 +17,20 @@
 <link rel="stylesheet" href="Dashboard.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 
 <style>
 
 /*Common Dashboard CSS*/
-
-@import	"https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+@import
+	"https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 body {
 	font-family: 'Poppins', sans-serif;
 	background: #fafafa
 }
+
 p {
 	font-family: 'Poppins', sans-serif;
 	font-size: 1.1em;
@@ -36,11 +38,13 @@ p {
 	line-height: 1.7em;
 	color: #0a0a0f;
 }
+
 a, a:hover, a:focus {
 	color: inherit;
 	text-decoration: none;
 	transition: all 0.3s;
 }
+
 .navbar {
 	padding: 15px 10px;
 	background: #fff;
@@ -49,57 +53,68 @@ a, a:hover, a:focus {
 	margin-bottom: 40px;
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
+
 .navbar-btn {
 	box-shadow: none;
 	outline: none !important;
 	border: none;
 }
+
 .line {
 	width: 100%;
 	height: 1px;
 	border-bottom: 1px dashed #ddd;
 }
+
 #sidebar {
 	min-width: 250px;
 	max-width: 250px;
 	background: #7386D5;
 	color: #fff;
 	transition: all 0.3s;
-	height:100;
-	
+	height: 100;
 }
+
 #sidebar.active {
 	margin-left: -250px;
 }
+
 #sidebar .sidebar-header {
 	padding: 20px;
 	background: #6d7fcc;
 }
+
 #sidebar ul.components {
 	padding: 20px 0px;
 	border-bottom: 1px solid #47748b;
 }
+
 #sidebar ul p {
 	padding: 10px;
 	font-size: 1.1em;
 	display: block;
 }
+
 #sidebar ul li a {
 	padding: 10px;
 	font-size: 1.1em;
 	display: block;
 }
+
 #sidebar ul li a:hover {
 	color: #7386D5;
 	background: #fff;
 }
+
 #sidebar ul li.active>a, a[aria-expanded="true"] {
 	color: #fff;
 	background: #6d7fcc;
 }
+
 a[data-toggle="collapse"] {
 	position: relative;
 }
+
 .dropdown-toggle::after {
 	display: block;
 	position: absolute;
@@ -107,14 +122,17 @@ a[data-toggle="collapse"] {
 	right: 20px;
 	transform: translateY(-50%);
 }
+
 ul ul a {
 	font-size: 0.9em !important;
 	padding-left: 30px !important;
 	background: #6d7fcc;
 }
+
 ul.CTAs {
 	padding: 20px;
 }
+
 ul.CTAs a {
 	text-align: center;
 	font-size: 0.9em !important;
@@ -122,20 +140,24 @@ ul.CTAs a {
 	border-radius: 5px;
 	margin-bottom: 5px;
 }
+
 a.download {
 	background: #fff;
 	color: #7386D5;
 }
+
 a.article, a.article:hover {
 	background: #6d7fcc !important;
 	color: #fff !important;
 }
+
 #content {
 	width: 100%;
 	padding: 20px;
 	min-height: 100vh;
 	transition: all 0.3s;
 }
+
 @media ( maz-width :768px) {
 	#sidebar {
 		margin-left: -250px;
@@ -147,24 +169,27 @@ a.article, a.article:hover {
 		display: none;
 	}
 }
-.btn-project{
+
+.btn-project {
 	font-family: 'Poppins', sans-serif;
 	background: #7386D5;
 	color: #fff;
 	transition: all 0.3s;
 }
+
 .btn:hover {
-  opacity: 1.5;
+	opacity: 1.5;
 }
 /*Common Dashboard CSS*/
-
 hr {
 	border: 1px solid #f1f1f1;
 	margin-bottom: 10px;
 }
+
 .bg {
 	background: #7386D5;
 }
+
 input[type=text], input[type=number], input[type=textarea], input[type=date],
 	input[type=email] {
 	width: 100%;
@@ -172,45 +197,37 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 	background: transparent;
 	border: none;
 }
-/* ADD PRODUCT Form*/
 </style>
 
 </head>
 
 <body>
 
-<% if(request.getAttribute("success")!=null) {%>
-	
+	<%
+		if (request.getAttribute("success") != null) {
+	%>
+
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script type="text/javascript">
+	<script type="text/javascript">
+		swal('WELCOME CLERK !!', "Your ID : ${clerkId}", 'success')
+	</script>
 
-    swal ( 'WELCOME CLERK !!' ,  "Your ID : ${id}" ,  'success' )
+	<%
+		}
+	%>
 
-    </script>
-	
-<% }%>
+	<%
+		if (request.getAttribute("update") != null) {
+	%>
 
-<% if(request.getAttribute("update")!=null) {%>
-	
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script type="text/javascript">
+	<script type="text/javascript">
+		swal('SUCCESSFULLY UPDATED !!', "Your ID : ${clerkId}", 'success')
+	</script>
 
-    swal ( 'SUCCESSFULLY UPDATED !!' ,  "Your ID : ${id}" ,  'success' )
-
-    </script>
-	
-<% }%>
-
-<%-- <% if(request.getAttribute("update")==null) {%>
-	
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script type="text/javascript">
-
-    swal ( 'UPDATION FAILED !!' ,  "Your ID : ${id}" ,  'error' )
-
-    </script>
-	
-<% }%> --%>
+	<%
+		}
+	%>
 
 
 	<!--Navigation Bar-->
@@ -240,7 +257,10 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 			<nav id="sidebar"
 				style="box-shadow: 0px 20px 50px grey; border-radius: 25px;">
 				<div class="sidebar-header">
-					<h5>Hi <%=session.getAttribute("name") %>,</h5>
+					<h5>
+						Hi
+						<%=session.getAttribute("name")%>,
+					</h5>
 				</div>
 
 
@@ -259,8 +279,8 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 					<li><a href="listAllDoctor">Doctor</a></li>
 					<li><a href="listAllPatient">Patient</a></li>
 					<li><a href="listAllMedicine">Medicine</a></li>
-					<li><a href="#">Prescription</a></li>
-					<li><a href="#">Bill</a></li>
+					<li><a href="listAllPrescription">Prescription</a></li>
+					<li><a href="listAllBill">Bill</a></li>
 					<li><a href="#pageSubmenu" data-toggle="collapse"
 						aria-expanded="false" class="dropdown-toggle">About Us</a>
 						<ul class="collapse list-unstyled" id="pageSubmenu">
@@ -319,37 +339,40 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 				<div class="card" style="box-shadow: 0px 20px 50px grey;">
 					<div class="card-header" style="background: #eaeafb;">Clerk</div>
 					<div class="card-body">
-					
-					
-					<!-- Search and Add -->						
+
+
+						<!-- Search and Add -->
 						<div class="container-fluid">
 							<div class="row">
-							
-							<!-- Search Bar-->
+
+								<!-- Search Bar-->
 								<div class="col-8">
-								
-								<input class="form-control" id="input" type="text" placeholder="Search" style="background:#ececf9; border-radius: 80px;  "/>
-								
+
+									<input class="form-control" id="input" type="text"
+										placeholder="Search"
+										style="background: #ececf9; border-radius: 80px;" />
+
 								</div>
-								
-								
-							<!-- Search Bar -->	
-							
+
+
+								<!-- Search Bar -->
+
 								<!-- Add Product Button -->
 								<div class="col-4">
 									<div align="right">
 
-										<a href="clerkAddition" role="button""> <i class="material-icons"
-											style="font-size: 40px;">add_circle </i>
+										<a href="clerkAddition" role="button""> <i
+											class="material-icons" style="font-size: 40px;">add_circle
+										</i>
 										</a>
 									</div>
 								</div>
 								<!-- Add Product Button -->
 							</div>
 						</div>
-					<!-- Search and Add -->
-				<br>		
-					
+						<!-- Search and Add -->
+						<br>
+
 						<div class="table-responsive" style="background: #f0e8f7">
 							<table id="table" class="table table-bordred table-striped">
 								<thead>
@@ -360,27 +383,30 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 									<th>Email</th>
 									<th>Contact</th>
 									<th>Edit</th>
-								<%
-									ArrayList clerkDetails = (ArrayList) request.getAttribute("clerkDetails");
-									Iterator iterator = clerkDetails.iterator();
-									while(iterator.hasNext())
-									{										
-										ClerkPOJO pojo = (ClerkPOJO) iterator.next();
-						        %>	
+									<%
+										ArrayList clerkDetails = (ArrayList) request.getAttribute("clerkDetails");
+										Iterator iterator = clerkDetails.iterator();
+										while (iterator.hasNext()) {
+											ClerkPOJO pojo = (ClerkPOJO) iterator.next();
+									%>
 								</thead>
 								<tbody id="table">
-										 <tr>
-									<td><a href="viewClerkDetails?id=<%=pojo.getClerkId() %>" class="btn btn-basic" role="button"><%=pojo.getClerkId() %></a></td> 
-										<td><%=pojo.getFirstName() %></td>
-										<td><%=pojo.getLastName() %></td>
-										<td><%=pojo.getState() %></td>
-										<td><%=pojo.getEmailId() %></td>
-										<td><%=pojo.getContactNumber() %></td>
-										 <td><a href="clerkUpdation?id=<%=pojo.getClerkId() %>" role="button"><i class="material-icons">mode_edit</i></a></td>
-										
-							    <%} %>			
-												
-									
+									<tr>
+										<td><a href="viewClerkDetails?id=<%=pojo.getClerkId()%>"
+											class="btn btn-basic" role="button"><%=pojo.getClerkId()%></a></td>
+										<td><%=pojo.getFirstName()%></td>
+										<td><%=pojo.getLastName()%></td>
+										<td><%=pojo.getState()%></td>
+										<td><%=pojo.getEmailId()%></td>
+										<td><%=pojo.getContactNumber()%></td>
+										<td><a href="clerkUpdation?id=<%=pojo.getClerkId()%>"
+											role="button"><i class="material-icons">mode_edit</i></a></td>
+
+										<%
+											}
+										%>
+
+
 									</tr>
 								</tbody>
 							</table>
@@ -406,7 +432,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 					<hr>
 					Are you Sure? <br>
 					<hr>
-					<form action="LoginLogout" method="post">
+					<form action="logout" method="post">
 						<input type="submit" name="logout-option" value="Yes"
 							class="btn btn-content btn-block" /> <br>
 					</form>
@@ -433,21 +459,35 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
 	<script>
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
-        });  
-        
-		$(document).ready(function(){
-			  $("#input").on("keyup", function() {
-			    var value = $(this).val().toLowerCase();
-			    $("#table tr").filter(function() {
-			      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-			    });
-			  });
-			});	
-		
-    </script>
+		$(document).ready(function() {
+			$('#sidebarCollapse').on('click', function() {
+				$('#sidebar').toggleClass('active');
+			});
+		});
+
+		$(document)
+				.ready(
+						function() {
+							$("#input")
+									.on(
+											"keyup",
+											function() {
+												var value = $(this).val()
+														.toLowerCase();
+												$("#table tr")
+														.filter(
+																function() {
+																	$(this)
+																			.toggle(
+																					$(
+																							this)
+																							.text()
+																							.toLowerCase()
+																							.indexOf(
+																									value) > -1)
+																});
+											});
+						});
+	</script>
 </body>
 </html>

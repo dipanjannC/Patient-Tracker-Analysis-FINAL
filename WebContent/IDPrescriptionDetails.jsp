@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
-<%@page import="com.pta.model.PrescriptionPOJO"%>      
+	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@page import="com.pta.model.PrescriptionPOJO"%>
 <!DOCTYPE html>
 <html>
 
@@ -16,16 +16,20 @@
 <link rel="stylesheet" href="dashboard.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 
 
 <style>
+/*Common Dashboard CSS*/
 @import
 	"https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
 body {
 	font-family: 'Poppins', sans-serif;
 	background: #fafafa
 }
+
 p {
 	font-family: 'Poppins', sans-serif;
 	font-size: 1.1em;
@@ -33,11 +37,13 @@ p {
 	line-height: 1.7em;
 	color: #0a0a0f;
 }
+
 a, a:hover, a:focus {
 	color: inherit;
 	text-decoration: none;
 	transition: all 0.3s;
 }
+
 .navbar {
 	padding: 15px 10px;
 	background: #fff;
@@ -46,16 +52,19 @@ a, a:hover, a:focus {
 	margin-bottom: 40px;
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
+
 .navbar-btn {
 	box-shadow: none;
 	outline: none !important;
 	border: none;
 }
+
 .line {
 	width: 100%;
 	height: 1px;
 	border-bottom: 1px dashed #ddd;
 }
+
 #sidebar {
 	min-width: 250px;
 	max-width: 250px;
@@ -64,38 +73,47 @@ a, a:hover, a:focus {
 	transition: all 0.3s;
 	height: 100;
 }
+
 #sidebar.active {
 	margin-left: -250px;
 }
+
 #sidebar .sidebar-header {
 	padding: 20px;
 	background: #6d7fcc;
 }
+
 #sidebar ul.components {
 	padding: 20px 0px;
 	border-bottom: 1px solid #47748b;
 }
+
 #sidebar ul p {
 	padding: 10px;
 	font-size: 1.1em;
 	display: block;
 }
+
 #sidebar ul li a {
 	padding: 10px;
 	font-size: 1.1em;
 	display: block;
 }
+
 #sidebar ul li a:hover {
 	color: #7386D5;
 	background: #fff;
 }
+
 #sidebar ul li.active>a, a[aria-expanded="true"] {
 	color: #fff;
 	background: #6d7fcc;
 }
+
 a[data-toggle="collapse"] {
 	position: relative;
 }
+
 .dropdown-toggle::after {
 	display: block;
 	position: absolute;
@@ -103,14 +121,17 @@ a[data-toggle="collapse"] {
 	right: 20px;
 	transform: translateY(-50%);
 }
+
 ul ul a {
 	font-size: 0.9em !important;
 	padding-left: 30px !important;
 	background: #6d7fcc;
 }
+
 ul.CTAs {
 	padding: 20px;
 }
+
 ul.CTAs a {
 	text-align: center;
 	font-size: 0.9em !important;
@@ -118,20 +139,24 @@ ul.CTAs a {
 	border-radius: 5px;
 	margin-bottom: 5px;
 }
+
 a.download {
 	background: #fff;
 	color: #7386D5;
 }
+
 a.article, a.article:hover {
 	background: #6d7fcc !important;
 	color: #fff !important;
 }
+
 #content {
 	width: 100%;
 	padding: 20px;
 	min-height: 100vh;
 	transition: all 0.3s;
 }
+
 @media ( maz-width :768px) {
 	#sidebar {
 		margin-left: -250px;
@@ -143,12 +168,14 @@ a.article, a.article:hover {
 		display: none;
 	}
 }
+
 .btn-project {
 	font-family: 'Poppins', sans-serif;
 	background: #7386D5;
 	color: #fff;
 	transition: all 0.3s;
 }
+
 .btn:hover {
 	opacity: 1.5;
 }
@@ -157,9 +184,11 @@ hr {
 	border: 1px solid #f1f1f1;
 	margin-bottom: 10px;
 }
+
 .bg {
 	background: #7386D5;
 }
+
 input[type=text], input[type=number], input[type=textarea], input[type=date],
 	input[type=email] {
 	width: 100%;
@@ -178,7 +207,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 		style="background: #ebeef9;">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a href="#" class="navbar-brand">PatientX</a>
+				<a href="dashboard" class="navbar-brand">PatientX</a>
 			</div>
 
 		</div>
@@ -200,7 +229,10 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 			<nav id="sidebar"
 				style="box-shadow: 0px 20px 50px grey; border-radius: 25px;">
 				<div class="sidebar-header">
-					<h5>Hi <%=session.getAttribute("name") %>,</h5>
+					<h5>
+						Hi
+						<%=session.getAttribute("name")%>,
+					</h5>
 				</div>
 
 
@@ -280,45 +312,110 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 			<div class="card-body">
 				<div class="container">
 					<div class="card-deck ">
-                      <% PrescriptionPOJO pojo=(PrescriptionPOJO)request.getAttribute("pojo"); int serialNumber=0; %>
+						<%
+							PrescriptionPOJO pojo = (PrescriptionPOJO) request.getAttribute("pojo");
+							int serialNumber = 0;
+						%>
 						<div class="card" style="width: 18rem;">
-							<img class="card-img-top " src="img/user.png" alt="Card image cap"
-								style="width: 78%;padding-left: 125px; padding-top: 15px; ">
+							<img class="card-img-top " src="img/user.png"
+								alt="Card image cap"
+								style="width: 78%; padding-left: 125px; padding-top: 15px;">
 							<div class="card-body text-center">
-								
-								<a href="updatePrescription?id=<%=pojo.getRequestId()%>" class="btn btn-primary">Edit Prescription</a>
+
+								<a href="updatePrescription?id=<%=pojo.getRequestId()%>"
+									class="btn btn-primary">Edit Prescription</a>
 							</div>
 
 						</div>
 
-                        <div class="card " style="background:#e0e0eb">
-							<div class="card-header" style="background: #eaeafb;"><%=pojo.getRequestId() %></div>
+						<div class="card " style="background: #e0e0eb">
+							<div class="card-header" style="background: #eaeafb;"><%=pojo.getRequestId()%></div>
 							<div class="card-body text-center">
-								<p class="card-text text-left">Patient ID: <%=pojo.getPatientId() %></p>
-								<p class="card-text text-left">Doctor ID: <%=pojo.getDoctorId() %></p>
-								<p class="card-text text-left">Request Date: <%=pojo.getRequestDate() %></p>
-								<%if(pojo.getMedicineId1()!=null){ %>
-						        <p class="card-text text-left">Medicine <%=++serialNumber%>: <%=pojo.getMedicineId1() %></p>
-						        <p class="card-text text-left">Quantity <%=serialNumber%>: <%=pojo.getQuantity1() %></p>
-						        <%} %>
-							    <%if(pojo.getMedicineId2()!=null){ %>
-						        <p class="card-text text-left">Medicine <%=++serialNumber%>: <%=pojo.getMedicineId2() %></p>
-						        <p class="card-text text-left">Quantity <%=serialNumber%>: <%=pojo.getQuantity2() %></p>
-						        <%} %>
-								<%if(pojo.getMedicineId3()!=null){ %>
-						        <p class="card-text text-left">Medicine <%=++serialNumber%>: <%=pojo.getMedicineId3() %></p>
-						        <p class="card-text text-left">Quantity <%=serialNumber%>: <%=pojo.getQuantity3() %></p>
-						        <%} %>
-								<%if(pojo.getMedicineId4()!=null){ %>
-						        <p class="card-text text-left">Medicine <%=++serialNumber%>: <%=pojo.getMedicineId4() %></p>
-						        <p class="card-text text-left">Quantity <%=serialNumber%>: <%=pojo.getQuantity4() %></p>
-						        <%} %>
-						        <%if(pojo.getMedicineId5()!=null){ %>
-						        <p class="card-text text-left">Medicine <%=++serialNumber%>: <%=pojo.getMedicineId5() %></p>
-						        <p class="card-text text-left">Quantity <%=serialNumber%>: <%=pojo.getQuantity5() %></p>
-						        <%} %>
-						        <p class="card-text text-left">Other Info: <%=pojo.getOtherInfo() %></p>
-						        <p class="card-text text-left">Status: <%=pojo.getStatus() %></p>
+								<p class="card-text text-left">
+									Patient ID:
+									<%=pojo.getPatientId()%></p>
+								<p class="card-text text-left">
+									Doctor ID:
+									<%=pojo.getDoctorId()%></p>
+								<p class="card-text text-left">
+									Request Date:
+									<%=pojo.getRequestDate()%></p>
+								<%
+									if (pojo.getMedicineId1() != null) {
+								%>
+								<p class="card-text text-left">
+									Medicine
+									<%=++serialNumber%>:
+									<%=pojo.getMedicineId1()%></p>
+								<p class="card-text text-left">
+									Quantity
+									<%=serialNumber%>:
+									<%=pojo.getQuantity1()%></p>
+								<%
+									}
+								%>
+								<%
+									if (pojo.getMedicineId2() != null) {
+								%>
+								<p class="card-text text-left">
+									Medicine
+									<%=++serialNumber%>:
+									<%=pojo.getMedicineId2()%></p>
+								<p class="card-text text-left">
+									Quantity
+									<%=serialNumber%>:
+									<%=pojo.getQuantity2()%></p>
+								<%
+									}
+								%>
+								<%
+									if (pojo.getMedicineId3() != null) {
+								%>
+								<p class="card-text text-left">
+									Medicine
+									<%=++serialNumber%>:
+									<%=pojo.getMedicineId3()%></p>
+								<p class="card-text text-left">
+									Quantity
+									<%=serialNumber%>:
+									<%=pojo.getQuantity3()%></p>
+								<%
+									}
+								%>
+								<%
+									if (pojo.getMedicineId4() != null) {
+								%>
+								<p class="card-text text-left">
+									Medicine
+									<%=++serialNumber%>:
+									<%=pojo.getMedicineId4()%></p>
+								<p class="card-text text-left">
+									Quantity
+									<%=serialNumber%>:
+									<%=pojo.getQuantity4()%></p>
+								<%
+									}
+								%>
+								<%
+									if (pojo.getMedicineId5() != null) {
+								%>
+								<p class="card-text text-left">
+									Medicine
+									<%=++serialNumber%>:
+									<%=pojo.getMedicineId5()%></p>
+								<p class="card-text text-left">
+									Quantity
+									<%=serialNumber%>:
+									<%=pojo.getQuantity5()%></p>
+								<%
+									}
+								%>
+								<p class="card-text text-left">
+									Other Info:
+									<%=pojo.getOtherInfo()%></p>
+								<p class="card-text text-left">
+									Status:
+									<%=pojo.getStatus()%></p>
 							</div>
 						</div>
 
@@ -388,12 +485,12 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 		crossorigin="anonymous"></script>
 
 	<script>
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
-        });  
-    </script>
+		$(document).ready(function() {
+			$('#sidebarCollapse').on('click', function() {
+				$('#sidebar').toggleClass('active');
+			});
+		});
+	</script>
 
 
 </body>

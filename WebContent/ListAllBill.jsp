@@ -1,13 +1,14 @@
-<%@page import="com.pta.model.MedicinePOJO"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="com.pta.model.PrescriptionPOJO"%>
+<!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="ISO-8859-1">
-<title>Form Dashboards</title>
+<title>Bills</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -16,11 +17,11 @@
 <link rel="stylesheet" href="Dashboard.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 
 
 <style>
-
 /*Common Dashboard CSS*/
 @import
 	"https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
@@ -196,27 +197,41 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 	background: transparent;
 	border: none;
 }
-
 </style>
 
 </head>
 
 <body>
+
+	<%
+		if (request.getAttribute("success") != null) {
+	%>
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script type="text/javascript">
+		swal('BILL CREATED !!', "Your ID : ${id}", 'success')
+	</script>
+
+	<%
+		}
+	%>
+
+
 	<!--Navigation Bar-->
 	<nav class="navbar navbar-expand-lg navbar-light "
-		style="background:#ebeef9;">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a href="dashboard" class="navbar-brand">PatientX</a>
-		</div>
+		style="background: #ebeef9;">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="dashboard" class="navbar-brand">PatientX</a>
+			</div>
 
-	</div>
-	<div align="right">
-		<form class="navbar-form navbar-right">
-			<button type="button" class="btn btn-project" data-toggle="modal"
-				data-target="#logoutModal">Logout</button>
-		</form>
-	</div>
+		</div>
+		<div align="right">
+			<form class="navbar-form navbar-right">
+				<button type="button" class="btn btn-project" data-toggle="modal"
+					data-target="#logoutModal">Logout</button>
+			</form>
+		</div>
 
 	</nav>
 	<!--Navigation Bar-->
@@ -227,47 +242,47 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 		<div class="p-1 bg mr-2" style="border-radius: 5px;">
 
 			<nav id="sidebar"
-				style="box-shadow:0px 20px 50px grey; border-radius: 25px;">
-			<div class="sidebar-header">
-				<h5>
-					Hi
-					<%=session.getAttribute("name")%>,
-				</h5>
-			</div>
+				style="box-shadow: 0px 20px 50px grey; border-radius: 25px;">
+				<div class="sidebar-header">
+					<h5>
+						Hi
+						<%=session.getAttribute("name")%>,
+					</h5>
+				</div>
 
 
-			<ul class="list-unstyled components">
-				<p>Management</p>
-				<li class="active"><a href="#homeSubmenu"
-					data-toggle="collapse" aria-expanded="false"
-					class="dropdown-toggle">Home</a>
-					<ul class="collapse list-unstyled" id="homeSubmenu">
-						<li><a href="#">home1</a></li>
-						<li><a href="#">home2</a></li>
-						<li><a href="#">home3</a></li>
-					</ul></li>
+				<ul class="list-unstyled components">
+					<p>Management</p>
+					<li class="active"><a href="#homeSubmenu"
+						data-toggle="collapse" aria-expanded="false"
+						class="dropdown-toggle">Home</a>
+						<ul class="collapse list-unstyled" id="homeSubmenu">
+							<li><a href="#">home1</a></li>
+							<li><a href="#">home2</a></li>
+							<li><a href="#">home3</a></li>
+						</ul></li>
 
-				<li><a href="listAllClerk">Clerk</a></li>
-				<li><a href="listAllDoctor">Doctor</a></li>
-				<li><a href="listAllPatient">Patient</a></li>
-				<li><a href="listAllMedicine">Medicine</a></li>
-				<li><a href="listAllPrescription">Prescription</a></li>
-				<li><a href="listAllBill">Bill</a></li>
-				<li><a href="#pageSubmenu" data-toggle="collapse"
-					aria-expanded="false" class="dropdown-toggle">About Us</a>
-					<ul class="collapse list-unstyled" id="pageSubmenu">
-						<li><a href="#">Developer 1</a></li>
-						<li><a href="#">Developer 2</a></li>
-						<li><a href="#">Developer 3</a></li>
-						<li><a href="#">Developer 4</a></li>
-						<li><a href="#">Developer 5</a></li>
-					</ul></li>
-			</ul>
+					<li><a href="listAllClerk">Clerk</a></li>
+					<li><a href="listAllDoctor">Doctor</a></li>
+					<li><a href="listAllPatient">Patient</a></li>
+					<li><a href="listAllMedicine">Medicine</a></li>
+					<li><a href="listAllPrescription">Prescription</a></li>
+					<li><a href="listAllBill">Bill</a></li>
+					<li><a href="#pageSubmenu" data-toggle="collapse"
+						aria-expanded="false" class="dropdown-toggle">About Us</a>
+						<ul class="collapse list-unstyled" id="pageSubmenu">
+							<li><a href="#">Developer 1</a></li>
+							<li><a href="#">Developer 2</a></li>
+							<li><a href="#">Developer 3</a></li>
+							<li><a href="#">Developer 4</a></li>
+							<li><a href="#">Developer 5</a></li>
+						</ul></li>
+				</ul>
 
-			<ul class="list-unstyled CTAs">
-				<li><a href="#" class="download">Download code</a></li>
-				<li><a href="#" class="article">article</a></li>
-			</ul>
+				<ul class="list-unstyled CTAs">
+					<li><a href="#" class="download">Download code</a></li>
+					<li><a href="#" class="article">article</a></li>
+				</ul>
 
 			</nav>
 
@@ -279,82 +294,99 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 		<div class="p-1 flex-grow-1">
 
 			<nav class="navbar navbar-expand-lg navbar-light bg-light "
-				style=" box-shadow:0px 15px 50px 5px grey;border-radius: 5px;">
+				style="box-shadow: 0px 15px 50px 5px grey; border-radius: 5px;">
 
-			<button type="button" id="sidebarCollapse"
-				class="btn btn-project rounded-circle">
-				<i class="fa fa-align-justify"></i> <span></span>
-			</button>
+				<button type="button" id="sidebarCollapse"
+					class="btn btn-project rounded-circle">
+					<i class="fa fa-align-justify"></i> <span></span>
+				</button>
 
-			<!--<a class="navbar-brand" href="#">Navbar</a> -->
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarNav" aria-controls="navbarNav"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a class="nav-link" href="#">Home
-							<span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Services</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="#">Appointments</a>
-					</li>
-					<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a>
-					</li>
-				</ul>
-			</div>
+				<!--<a class="navbar-brand" href="#">Navbar</a> -->
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarNav" aria-controls="navbarNav"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active"><a class="nav-link" href="#">Home
+								<span class="sr-only">(current)</span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Services</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="#">Appointments</a>
+						</li>
+						<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a>
+						</li>
+					</ul>
+				</div>
 			</nav>
 
 			<div class="container">
 				<div class="card" style="box-shadow: 0px 20px 50px grey;">
-					<div class="card-header" style="background: #eaeafb;">Medicine</div>
+					<div class="card-header" style="background: #eaeafb;">Patient</div>
 					<div class="card-body">
-						<div style="background: #f0e8f7">
 
+						<!-- Search and Add -->
+						<div class="container-fluid">
+							<div class="row">
 
-							<form:form action="updateMedicine" method="post"
-								style="width: 100%;" modelAttribute="medicine">
+								<!-- Search Bar-->
+								<div class="col-8">
 
-								<%
-									MedicinePOJO pojo = (MedicinePOJO) request.getAttribute("pojo");
-								%>
+									<input class="form-control" id="input" type="text"
+										placeholder="Search"
+										style="background: #ececf9; border-radius: 80px;" />
 
-								<form:input path="medicineId" type="text" name="medicineId"
-									value="<%=pojo.getMedicineId()%>" readonly="true" />
-								<hr>
-								<form:input path="medicineDescription" type="textarea"
-									name="description" placeholder="Description" maxlength="30"
-									value="<%=pojo.getMedicineDescription()%>" required="required" />
-								<hr>
-								<form:input path="cureFor" type="textarea" name="curefor"
-									maxlength="30" placeholder="Cure For"
-									value="<%=pojo.getCureFor()%>" required="required" />
-								<hr>
-								<form:input path="manufacturingCompany" type="text"
-									placeholder="Manufacturing Company" maxlength="20"
-									value="<%=pojo.getManufacturingCompany()%>" name="company"
-									required="required" />
-								<hr>
-								<form:input path="dosage" type="number" name="dosage"
-									value="<%=pojo.getDosage()%>" maxlength="5"
-									placeholder="Dosage Required (in mg)" required="required" />
-								<hr>
-								<form:input path="prescribedFor" type="textarea" maxlength="30"
-									name="prescribedfor" value="<%=pojo.getPrescribedFor()%>"
-									placeholder="Medicine Prescribed For" required="required" />
-								<hr>
-								<form:input path="amount" type="number" name="amount"
-									value="<%=pojo.getAmount()%>" maxlength="5"
-									placeholder="Medicine Amount (in Rs.)" required="required" />
-								<hr>
-								<div align="right">
-									<input type="submit" class="btn btn-project" value="Update"
-										name="update"> <input type="reset"
-										class="btn btn-danger" value="Clear">
 								</div>
-							</form:form>
+
+
+								<!-- Search Bar -->
+
+
+							</div>
+						</div>
+
+						<br>
+
+						<div class="table-responsive" style="background: #f0e8f7">
+							<table id="mytable" class="table table-bordred table-striped">
+
+								<thead>
+									<th>Request ID</th>
+									<th>Patient ID</th>
+									<th>Request Date</th>
+									<th>Info</th>
+
+								</thead>
+								<tbody>
+									<%
+										ArrayList billDetails = (ArrayList) request.getAttribute("billDetails");
+										Iterator iterator = billDetails.iterator();
+										while (iterator.hasNext()) {
+											PrescriptionPOJO pojo = (PrescriptionPOJO) iterator.next();
+									%>
+									<tr>
+
+										<td><%=pojo.getRequestId()%></td>
+										<td><a
+											href="viewPatientDetails?id=<%=pojo.getPatientId()%>"
+											class="btn btn-basic" role="button"><%=pojo.getPatientId()%></a></td>
+										<td><%=pojo.getRequestDate()%></td>
+										<td><a href="generateBill?id=<%=pojo.getRequestId()%>"
+											role="button"><i class="material-icons">note_add</i></a></td>
+
+										<%
+											}
+										%>
+
+									</tr>
+
+								</tbody>
+
+							</table>
+
+
 						</div>
 					</div>
 					<div class="card-footer"></div>
@@ -367,9 +399,6 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 
 
 	</div>
-
-
-
 
 
 
@@ -426,5 +455,9 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 			});
 		});
 	</script>
+
+
 </body>
+
+
 </html>
