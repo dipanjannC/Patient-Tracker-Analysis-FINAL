@@ -12,77 +12,77 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@SequenceGenerator(name="seq", initialValue=1001, allocationSize=1)
-@Table(name="bill")
+@SequenceGenerator(name = "seq", initialValue = 1001, allocationSize = 1)
+@Table(name = "bill")
 public class BillEntity {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
-	@Column(name="bill_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
+	@Column(name = "bill_id")
 	private long billId;
-	
-	@ManyToOne(cascade=CascadeType.ALL, optional = false)
-	@JoinColumn(name="patient_id")
+
+	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+	@JoinColumn(name = "patient_id")
 	private PatientEntity patientEntity;
-	
-	@ManyToOne(cascade=CascadeType.ALL, optional = false)
-	@JoinColumn(name="doctor_id")
+
+	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+	@JoinColumn(name = "doctor_id")
 	private DoctorEntity doctorEntity;
-	
-	@Column(name="bill_date")
+
+	@Column(name = "bill_date")
 	private String billDate;
-	
-	@ManyToOne(cascade=CascadeType.ALL, optional = false)
-	@JoinColumn(name="medicine_id_1")
+
+	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+	@JoinColumn(name = "medicine_id_1")
 	private MedicineEntity medicineEntity1;
-	
-	@Column(name="quantity_1")
+
+	@Column(name = "quantity_1")
 	private int quantity1;
-	
-	@Column(name="amount_1")
+
+	@Column(name = "amount_1")
 	private int amount1;
-	
-	@ManyToOne(cascade=CascadeType.ALL, optional = false)
-	@JoinColumn(name="medicine_id_2")
+
+	@ManyToOne(cascade = CascadeType.ALL, optional = true)
+	@JoinColumn(name = "medicine_id_2")
 	private MedicineEntity medicineEntity2;
-	
-	@Column(name="quantity_2")
+
+	@Column(name = "quantity_2")
 	private int quantity2;
-	
-	@Column(name="amount_2")
+
+	@Column(name = "amount_2")
 	private int amount2;
-	
-	@ManyToOne(cascade=CascadeType.ALL, optional = false)
-	@JoinColumn(name="medicine_id_3")
+
+	@ManyToOne(cascade = CascadeType.ALL, optional = true)
+	@JoinColumn(name = "medicine_id_3")
 	private MedicineEntity medicineEntity3;
-	
-	@Column(name="quantity_3")
+
+	@Column(name = "quantity_3")
 	private int quantity3;
-	
-	@Column(name="amount_3")
+
+	@Column(name = "amount_3")
 	private int amount3;
-	
-	@ManyToOne(cascade=CascadeType.ALL, optional = false)
-	@JoinColumn(name="medicine_id_4")
+
+	@ManyToOne(cascade = CascadeType.ALL, optional = true)
+	@JoinColumn(name = "medicine_id_4")
 	private MedicineEntity medicineEntity4;
-	
-	@Column(name="quantity_4")
+
+	@Column(name = "quantity_4")
 	private int quantity4;
-	
-	@Column(name="amount_4")
+
+	@Column(name = "amount_4")
 	private int amount4;
-	
-	@ManyToOne(cascade=CascadeType.ALL, optional = false)
-	@JoinColumn(name="medicine_id_5")
+
+	@ManyToOne(cascade = CascadeType.ALL, optional = true)
+	@JoinColumn(name = "medicine_id_5")
 	private MedicineEntity medicineEntity5;
-	
-	@Column(name="quantity_5")
+
+	@Column(name = "quantity_5")
 	private int quantity5;
-	
-	@Column(name="amount_5")
+
+	@Column(name = "amount_5")
 	private int amount5;
-	
-	@Column(name="total_amount")
+
+	@Column(name = "total_amount")
 	private int totalAmount;
 
 	public long getBillId() {
@@ -244,16 +244,4 @@ public class BillEntity {
 	public void setTotalAmount(int totalAmount) {
 		this.totalAmount = totalAmount;
 	}
-
-	@Override
-	public String toString() {
-		return "BillEntity [billId=" + billId + ", patientEntity=" + patientEntity + ", doctorEntity=" + doctorEntity
-				+ ", billDate=" + billDate + ", medicineEntity1=" + medicineEntity1 + ", quantity1=" + quantity1
-				+ ", amount1=" + amount1 + ", medicineEntity2=" + medicineEntity2 + ", quantity2=" + quantity2
-				+ ", amount2=" + amount2 + ", medicineEntity3=" + medicineEntity3 + ", quantity3=" + quantity3
-				+ ", amount3=" + amount3 + ", medicineEntity4=" + medicineEntity4 + ", quantity4=" + quantity4
-				+ ", amount4=" + amount4 + ", medicineEntity5=" + medicineEntity5 + ", quantity5=" + quantity5
-				+ ", amount5=" + amount5 + ", totalAmount=" + totalAmount + "]";
-	}
-	
 }

@@ -9,9 +9,7 @@ public class ApplicationException extends Exception {
 		this.errorMessage = errorMessage;
 	}
 
-	@Override
 	public String getMessage() {
-		// TODO Auto-generated method stub
 		return (errorCode + ":" + errorMessage);
 	}
 

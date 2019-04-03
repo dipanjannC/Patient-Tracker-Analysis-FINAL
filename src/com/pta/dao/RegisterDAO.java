@@ -5,6 +5,6 @@ import com.pta.model.AdminPOJO;
 
 public interface RegisterDAO {
 
-	public String addAdmin(AdminPOJO admin) throws ApplicationException;
-	
+	public String addAdminDetails(AdminPOJO pojo) throws ApplicationException;
+
 }

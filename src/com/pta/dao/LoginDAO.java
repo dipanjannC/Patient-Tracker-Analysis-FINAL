@@ -1,10 +1,11 @@
 package com.pta.dao;
+
 import com.pta.java.ApplicationException;
 import com.pta.model.AdminPOJO;
 
-public interface LoginDAO 
-{
+public interface LoginDAO {
 
-	public int checkAdmin(AdminPOJO admin) throws ApplicationException;
-	public String getName(int id) throws ApplicationException;
+	public int validateAdmin(AdminPOJO pojo) throws ApplicationException;
+
+	public String getAdminName(int adminId) throws ApplicationException;
 }

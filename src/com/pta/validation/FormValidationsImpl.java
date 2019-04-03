@@ -1,5 +1,5 @@
 package com.pta.validation;
 
-public class FormValidationsImpl implements FormValidations{
+public class FormValidationsImpl implements FormValidations {
 
 }

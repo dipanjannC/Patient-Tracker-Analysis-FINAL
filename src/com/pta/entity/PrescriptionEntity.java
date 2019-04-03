@@ -12,64 +12,64 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@SequenceGenerator(name="seq", initialValue=1001, allocationSize=1)
-@Table(name="prescription")
+@SequenceGenerator(name = "seq", initialValue = 1001, allocationSize = 1)
+@Table(name = "prescription")
 public class PrescriptionEntity {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
-	@Column(name="request_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
+	@Column(name = "request_id")
 	private long requestId;
-	
-	@ManyToOne(cascade=CascadeType.ALL, optional = false)
-	@JoinColumn(name="patient_id")
+
+	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+	@JoinColumn(name = "patient_id")
 	private PatientEntity patientEntity;
-	
-	@ManyToOne(cascade=CascadeType.ALL, optional = false)
-	@JoinColumn(name="doctor_id")
+
+	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+	@JoinColumn(name = "doctor_id")
 	private DoctorEntity doctorEntity;
-	
-	@Column(name="request_date")
+
+	@Column(name = "request_date")
 	private String requestDate;
-	
-	@ManyToOne(cascade=CascadeType.ALL, optional = false)
-	@JoinColumn(name="medicine_id_1")
+
+	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+	@JoinColumn(name = "medicine_id_1")
 	private MedicineEntity medicineEntity1;
-	
-	@Column(name="quantity_1")
+
+	@Column(name = "quantity_1")
 	private int quantity1;
-	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="medicine_id_2")
+
+	@ManyToOne(cascade = CascadeType.ALL, optional = true)
+	@JoinColumn(name = "medicine_id_2", nullable=true)
 	private MedicineEntity medicineEntity2;
-	
-	@Column(name="quantity_2")
+
+	@Column(name = "quantity_2")
 	private int quantity2;
-	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="medicine_id_3")
+
+	@ManyToOne(cascade = CascadeType.ALL, optional = true)
+	@JoinColumn(name = "medicine_id_3")
 	private MedicineEntity medicineEntity3;
-	
-	@Column(name="quantity_3")
+
+	@Column(name = "quantity_3")
 	private int quantity3;
-	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="medicine_id_4")
+
+	@ManyToOne(cascade = CascadeType.ALL, optional = true)
+	@JoinColumn(name = "medicine_id_4")
 	private MedicineEntity medicineEntity4;
-	
-	@Column(name="quantity_4")
+
+	@Column(name = "quantity_4")
 	private int quantity4;
-	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="medicine_id_5")
+
+	@ManyToOne(cascade = CascadeType.ALL, optional = true)
+	@JoinColumn(name = "medicine_id_5")
 	private MedicineEntity medicineEntity5;
-	
-	@Column(name="quantity_5")
+
+	@Column(name = "quantity_5")
 	private int quantity5;
-	
-	@Column(name="other_info")
+
+	@Column(name = "other_info")
 	private String otherInfo;
-	
+
 	public long getRequestId() {
 		return requestId;
 	}
@@ -198,7 +198,7 @@ public class PrescriptionEntity {
 		this.status = status;
 	}
 
-	@Column(name="status")
-	private String status;	
+	@Column(name = "status")
+	private String status;
 
 }
