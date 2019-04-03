@@ -362,18 +362,18 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 									maxlength="6" />
 								<hr>
 								<label for="contact"></label>
-								<form:input path="contactNumber" type="number"
+								<form:input path="contactNumber" type="text"
 									pattern="[0-9]{10,}"
-									itle="Don't include '0', should contain '6' digits only"
+									title="Don't include '0', should contain '10' digits only"
 									maxlength="10" name="contactNumber" id="contact"
 									placeholder="Contact Number" required="required" />
 								<hr>
 								<label for="altcontact"></label>
 								<form:input path="alternateContactNumber" pattern="[0-9]{10,}"
-									itle="Don't include '0', should contain '6' digits only"
+									title="Don't include '0', should contain '10' digits only"
 									maxlength="10" type="number" name="altContactNumber"
 									id="altContactNumber"
-									placeholder="Alternate Contact Number (if any)" />
+									placeholder="Alternate Contact Number (if any, else type '0' if not required)" />
 								<hr>
 								<label for="email"></label>
 								<form:input path="emailId" type="email" name="email" id="email"

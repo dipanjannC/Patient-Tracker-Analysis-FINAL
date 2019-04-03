@@ -277,14 +277,14 @@ body {
 
 						<div class="form-group">
 							<label>Contact Number</label>
-							<form:input path="contactNumber" type="number"
+							<form:input path="contactNumber" type="text"
 								placeholder="Contact Number" class="form-control" name="contact"
 								pattern="[0-9]{10,}"
 								title="Don't begin with '0', should contain '10' digits only"
 								maxlength="10" required="required" />
 						</div>
 						<div class="form-group">
-							<label>Alternate Contact Number</label>
+							<label>Alternate Contact Number (Enter '0' if not required)</label>
 							<form:input path="alternateContactNumber" type="number"
 								placeholder="Alternate Contact Number (if any)"
 								class="form-control" name="altcontact" pattern="[0-9]{10,}"
@@ -356,6 +356,14 @@ body {
 						$("#divCheckPassword").html("Passwords match.").css(
 								"color", "green");
 				});
+		
+		$("#my-form").submit(function() {
+		    $(this).find(":input").filter(function () {
+		        return !this.value;
+		    }).attr("disabled", true);
+
+		    return true;
+		});
 	</script>
 
 </body>

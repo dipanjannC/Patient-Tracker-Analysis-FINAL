@@ -391,8 +391,8 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 								<label for="altcontact"></label>
 								<form:input path="alternateContactNumber" pattern="[0-9]{10,}"
 									title="Don't include '0', should contain '10' digits only"
-									maxlength="10" type="text" name="altcontact" id="altcontact"
-									placeholder="Alternate Contact Number (if any)" />
+									maxlength="10" type="number" name="altcontact" id="altcontact"
+									placeholder="Alternate Contact Number (if any, else type '0' if not required)" />
 								<hr>
 								<label for="email"></label>
 								<form:input path="emailId" type="email" name="email" id="email"

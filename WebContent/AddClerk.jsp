@@ -372,11 +372,11 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 									maxlength="10" placeholder="Contact Number" required="required" />
 								<hr>
 								<label for="altcontact"></label>
-								<form:input path="alternateContactNumber" type="text"
+								<form:input path="alternateContactNumber" type="number"
 									name="alternateContactNumber" id="alternateContactNumber"
 									title="Don't begin with '0', should contain '10' digits only"
 									pattern="[0-9]{10,}" maxlength="10"
-									placeholder="Alternate Contact Number (if any)" />
+									placeholder="Alternate Contact Number (if any, else type '0' if not required)" />
 								<hr>
 								<label for="email"></label>
 								<form:input path="emailId" type="email" name="email" id="email"

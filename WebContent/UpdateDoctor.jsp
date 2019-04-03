@@ -408,7 +408,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 								<hr>
 								<label for="altcontact"></label>
 								<form:input path="alternateContactNumber"
-									placeholder="Alternate Contact Number (if any)" type="text"
+									placeholder="Alternate Contact Number (if any, else type '0' if not required)" type="number"
 									name="altcontact" id="altcontact" pattern="[0-9]{10,}"
 									title="Don't include '0', should contain '10' digits only"
 									maxlength="10" value="<%=pojo.getAlternateContactNumber()%>" />
