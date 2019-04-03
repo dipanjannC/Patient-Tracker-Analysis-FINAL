@@ -7,7 +7,7 @@
 
 <head>
 <meta charset="ISO-8859-1">
-<title>ID Patient Details</title>
+<title>ID Prescription Details</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -317,9 +317,9 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 							int serialNumber = 0;
 						%>
 						<div class="card" style="width: 18rem;">
-							<img class="card-img-top " src="img/user.png"
+<!-- 							<img class="card-img-top " src="file:///D:/Patient-Tracker-Analysis/patient-tracker-analysis/WebContent/img/user.png"
 								alt="Card image cap"
-								style="width: 78%; padding-left: 125px; padding-top: 15px;">
+								style="width: 78%; padding-left: 125px; padding-top: 15px;"> -->
 							<div class="card-body text-center">
 
 								<a href="updatePrescription?id=<%=pojo.getRequestId()%>"
