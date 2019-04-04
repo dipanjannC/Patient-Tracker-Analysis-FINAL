@@ -234,7 +234,10 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
 
 			prescriptionEntity.setRequestDate(pojo.getRequestDate());
 			prescriptionEntity.setOtherInfo(pojo.getOtherInfo());
-			prescriptionEntity.setStatus(pojo.getStatus());
+			
+			if(pojo.getStatus().equals("Bill Pending")) {
+				prescriptionEntity.setStatus("P");
+			}
 
 			session.save(prescriptionEntity);
 			transaction.commit();
@@ -262,6 +265,7 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
 		SessionFactory sessionfactory = null;
 		Session session = null;
 		PrescriptionPOJO prescriptionPOJO = new PrescriptionPOJO();
+		StringBuilder builder = new StringBuilder();
 
 		try {
 			sessionfactory = HibernateUtil.getSessionFactory();
@@ -272,33 +276,65 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
 			prescriptionEntity = session.get(PrescriptionEntity.class, Long.parseLong(prescriptionId.substring(3)));
 
 			prescriptionPOJO.setRequestId(prescriptionId);
-			prescriptionPOJO.setPatientId(Long.toString(prescriptionEntity.getPatientEntity().getPatientId()));
-			prescriptionPOJO.setDoctorId(Long.toString(prescriptionEntity.getDoctorEntity().getDoctorId()));
+			
+			builder.append("PAT");
+			builder.append(Long.toString(prescriptionEntity.getPatientEntity().getPatientId()));
+			String patientId = builder.toString();
+			prescriptionPOJO.setPatientId(patientId);
+			builder.setLength(0);
+			
+			builder.append("DOC");
+			builder.append(Long.toString(prescriptionEntity.getDoctorEntity().getDoctorId()));
+			String doctorId = builder.toString();
+			prescriptionPOJO.setDoctorId(doctorId);
+			builder.setLength(0);
+			
 			prescriptionPOJO.setRequestDate(prescriptionEntity.getRequestDate());
-			prescriptionPOJO.setMedicineId1(Long.toString(prescriptionEntity.getMedicineEntity1().getMedicineId()));
+			
+			builder.append("MED");
+			builder.append(Long.toString(prescriptionEntity.getMedicineEntity1().getMedicineId()));
+			String medicineId1 = builder.toString();
+			prescriptionPOJO.setMedicineId1(medicineId1);
+			builder.setLength(0);
 			prescriptionPOJO.setQuantity1(prescriptionEntity.getQuantity1());
 			
 			
             if (prescriptionEntity.getMedicineEntity2()!=null) {
-    			prescriptionPOJO.setMedicineId2(Long.toString(prescriptionEntity.getMedicineEntity2().getMedicineId()));
+    			builder.append("MED");
+    			builder.append(Long.toString(prescriptionEntity.getMedicineEntity2().getMedicineId()));
+    			String medicineId2 = builder.toString();
+    			prescriptionPOJO.setMedicineId2(medicineId2);
+    			builder.setLength(0);
     			prescriptionPOJO.setQuantity2(prescriptionEntity.getQuantity2());
             }
 			
 			
             if (prescriptionEntity.getMedicineEntity3()!=null) {
-    			prescriptionPOJO.setMedicineId3(Long.toString(prescriptionEntity.getMedicineEntity3().getMedicineId()));
+    			builder.append("MED");
+    			builder.append(Long.toString(prescriptionEntity.getMedicineEntity3().getMedicineId()));
+    			String medicineId3 = builder.toString();
+    			prescriptionPOJO.setMedicineId3(medicineId3);
+    			builder.setLength(0);
     			prescriptionPOJO.setQuantity3(prescriptionEntity.getQuantity3());
             }
 			
 			
             if (prescriptionEntity.getMedicineEntity4()!=null) {
-    			prescriptionPOJO.setMedicineId4(Long.toString(prescriptionEntity.getMedicineEntity4().getMedicineId()));
+    			builder.append("MED");
+    			builder.append(Long.toString(prescriptionEntity.getMedicineEntity4().getMedicineId()));
+    			String medicineId4 = builder.toString();
+    			prescriptionPOJO.setMedicineId4(medicineId4);
+    			builder.setLength(0);
     			prescriptionPOJO.setQuantity4(prescriptionEntity.getQuantity4());
             }
 			
 			
             if (prescriptionEntity.getMedicineEntity5()!=null) {
-    			prescriptionPOJO.setMedicineId5(Long.toString(prescriptionEntity.getMedicineEntity5().getMedicineId()));
+    			builder.append("MED");
+    			builder.append(Long.toString(prescriptionEntity.getMedicineEntity5().getMedicineId()));
+    			String medicineId5 = builder.toString();
+    			prescriptionPOJO.setMedicineId5(medicineId5);
+    			builder.setLength(0);
     			prescriptionPOJO.setQuantity5(prescriptionEntity.getQuantity5());
             }
 			
@@ -338,28 +374,28 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
 			prescriptionEntity.setMedicineEntity1(medicineEntity1);
 			prescriptionEntity.setQuantity1(pojo.getQuantity1());
 
-			if (pojo.getMedicineId2() != null && pojo.getQuantity2() != 0) {
+			if (pojo.getMedicineId2() != null) {
 				MedicineEntity medicineEntity2 = new MedicineEntity();
 				medicineEntity2 = session.get(MedicineEntity.class, Long.parseLong(pojo.getMedicineId2().substring(3)));
 				prescriptionEntity.setMedicineEntity2(medicineEntity2);
 				prescriptionEntity.setQuantity2(pojo.getQuantity2());
 			}
 
-			if (pojo.getMedicineId3() != null && pojo.getQuantity3() != 0) {
+			if (pojo.getMedicineId3() != null) {
 				MedicineEntity medicineEntity3 = new MedicineEntity();
 				medicineEntity3 = session.get(MedicineEntity.class, Long.parseLong(pojo.getMedicineId3().substring(3)));
 				prescriptionEntity.setMedicineEntity3(medicineEntity3);
 				prescriptionEntity.setQuantity3(pojo.getQuantity3());
 			}
 
-			if (pojo.getMedicineId4() != null && pojo.getQuantity4() != 0) {
+			if (pojo.getMedicineId4() != null) {
 				MedicineEntity medicineEntity4 = new MedicineEntity();
 				medicineEntity4 = session.get(MedicineEntity.class, Long.parseLong(pojo.getMedicineId4().substring(3)));
 				prescriptionEntity.setMedicineEntity4(medicineEntity4);
 				prescriptionEntity.setQuantity4(pojo.getQuantity4());
 			}
 
-			if (pojo.getMedicineId5() != null && pojo.getQuantity5() != 0) {
+			if (pojo.getMedicineId5() != null) {
 				MedicineEntity medicineEntity5 = new MedicineEntity();
 				medicineEntity5 = session.get(MedicineEntity.class, Long.parseLong(pojo.getMedicineId5().substring(3)));
 				prescriptionEntity.setMedicineEntity5(medicineEntity5);
@@ -368,6 +404,10 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
 
 			prescriptionEntity.setRequestDate(pojo.getRequestDate());
 			prescriptionEntity.setOtherInfo(pojo.getOtherInfo());
+			
+			if(pojo.getStatus().equals("Bill Pending")) {
+				prescriptionEntity.setStatus("P");
+			}
 
 			session.save(prescriptionEntity);
 			transaction.commit();

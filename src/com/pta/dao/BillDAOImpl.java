@@ -194,7 +194,9 @@ public class BillDAOImpl implements BillDAO {
 				billEntity.setAmount5(prescriptionEntity.getMedicineEntity5().getAmount());
 				billEntity.setQuantity5(prescriptionEntity.getQuantity5());
 			}
-
+			
+			prescriptionEntity.setStatus("B");
+            session.save(prescriptionEntity);
 			session.save(billEntity);
 			transaction.commit();
 
