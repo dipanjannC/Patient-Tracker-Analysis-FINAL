@@ -252,7 +252,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 
 
 				<ul class="list-unstyled components">
-					<p>Management</p>
+					<!-- <p>Management</p>
 					<li class="active"><a href="#homeSubmenu"
 						data-toggle="collapse" aria-expanded="false"
 						class="dropdown-toggle">Home</a>
@@ -260,7 +260,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 							<li><a href="#">home1</a></li>
 							<li><a href="#">home2</a></li>
 							<li><a href="#">home3</a></li>
-						</ul></li>
+						</ul></li> -->
 
 					<li><a href="listAllClerk">Clerk</a></li>
 					<li><a href="listAllDoctor">Doctor</a></li>
@@ -356,7 +356,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 									<th>Request ID</th>
 									<th>Patient ID</th>
 									<th>Request Date</th>
-									<th>Info</th>
+									<th>Create Bill</th>
 
 								</thead>
 								<tbody>

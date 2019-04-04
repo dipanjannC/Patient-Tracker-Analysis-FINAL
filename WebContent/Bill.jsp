@@ -217,7 +217,7 @@ hr {
 
 
 				<ul class="list-unstyled components">
-					<p>Management</p>
+					<!-- <p>Management</p>
 					<li class="active"><a href="#homeSubmenu"
 						data-toggle="collapse" aria-expanded="false"
 						class="dropdown-toggle">Home</a>
@@ -225,7 +225,7 @@ hr {
 							<li><a href="#">home1</a></li>
 							<li><a href="#">home2</a></li>
 							<li><a href="#">home3</a></li>
-						</ul></li>
+						</ul></li> -->
 
 					<li><a href="listAllClerk">Clerk</a></li>
 					<li><a href="listAllDoctor">Doctor</a></li>
@@ -373,7 +373,7 @@ hr {
 															<td class="text-center"><%= billDetailsPojo.getQuantity1() %></td>
 															<td class="text-right"><%= billDetailsPojo.getTotalAmountMedicine1() %></td>
 														</tr>
-														<% if(billDetailsPojo.getMedicineId2() != null){ %>
+														<% if(billDetailsPojo.getMedicineId2() != null && billDetailsPojo.getQuantity2()!=0){ %>
 														<tr>
 															<td><%= billDetailsPojo.getMedicineId2() %></td>
 															<td class="text-center">Rs.<%= billDetailsPojo.getAmount2() %></td>
@@ -381,7 +381,7 @@ hr {
 															<td class="text-right"><%= billDetailsPojo.getTotalAmountMedicine2() %></td>
 														</tr>
 														<%} %>
-														<% if(billDetailsPojo.getMedicineId3() != null){ %>
+														<% if(billDetailsPojo.getMedicineId3() != null && billDetailsPojo.getQuantity3()!=0){ %>
 														<tr>
 															<td><%= billDetailsPojo.getMedicineId3() %></td>
 															<td class="text-center">Rs.<%= billDetailsPojo.getAmount3() %></td>
@@ -389,7 +389,7 @@ hr {
 															<td class="text-right"><%= billDetailsPojo.getTotalAmountMedicine3() %></td>
 														</tr>
 														<%} %>
-														<% if(billDetailsPojo.getMedicineId4() != null){ %>
+														<% if(billDetailsPojo.getMedicineId4() != null && billDetailsPojo.getQuantity4()!=0){ %>
 														<tr>
 															<td><%= billDetailsPojo.getMedicineId4() %></td>
 															<td class="text-center">Rs.<%= billDetailsPojo.getAmount4() %></td>
@@ -397,7 +397,7 @@ hr {
 															<td class="text-right"><%= billDetailsPojo.getTotalAmountMedicine4() %></td>
 														</tr>
 														<%} %>
-														<% if(billDetailsPojo.getMedicineId5() != null){ %>
+														<% if(billDetailsPojo.getMedicineId5() != null && billDetailsPojo.getQuantity5()!=0){ %>
 														<tr>
 															<td><%= billDetailsPojo.getMedicineId5() %></td>
 															<td class="text-center">Rs.<%= billDetailsPojo.getAmount5() %></td>

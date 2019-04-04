@@ -237,7 +237,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 
 
 				<ul class="list-unstyled components">
-					<p>Management</p>
+				<!-- 	<p>Management</p>
 					<li class="active"><a href="#homeSubmenu"
 						data-toggle="collapse" aria-expanded="false"
 						class="dropdown-toggle">Home</a>
@@ -245,7 +245,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 							<li><a href="#">home1</a></li>
 							<li><a href="#">home2</a></li>
 							<li><a href="#">home3</a></li>
-						</ul></li>
+						</ul></li> -->
 
 					<li><a href="listAllClerk">Clerk</a></li>
 					<li><a href="listAllDoctor">Doctor</a></li>
@@ -317,12 +317,11 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 							int serialNumber = 0;
 						%>
 						<div class="card" style="width: 18rem;">
-<!-- 							<img class="card-img-top " src="file:///D:/Patient-Tracker-Analysis/patient-tracker-analysis/WebContent/img/user.png"
+							<!-- 							<img class="card-img-top " src="file:///D:/Patient-Tracker-Analysis/patient-tracker-analysis/WebContent/img/user.png"
 								alt="Card image cap"
 								style="width: 78%; padding-left: 125px; padding-top: 15px;"> -->
 							<div class="card-body text-center">
-
-								<a href="updatePrescription?id=<%=pojo.getRequestId()%>"
+								<a href="prescriptionUpdation?id=<%=pojo.getRequestId()%>"
 									class="btn btn-primary">Edit Prescription</a>
 							</div>
 
@@ -355,7 +354,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 									}
 								%>
 								<%
-									if (pojo.getMedicineId2() != null) {
+									if (pojo.getMedicineId2() != null && pojo.getQuantity2() != 0) {
 								%>
 								<p class="card-text text-left">
 									Medicine
@@ -369,7 +368,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 									}
 								%>
 								<%
-									if (pojo.getMedicineId3() != null) {
+									if (pojo.getMedicineId3() != null && pojo.getQuantity3() != 0) {
 								%>
 								<p class="card-text text-left">
 									Medicine
@@ -383,7 +382,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 									}
 								%>
 								<%
-									if (pojo.getMedicineId4() != null) {
+									if (pojo.getMedicineId4() != null && pojo.getQuantity4() != 0) {
 								%>
 								<p class="card-text text-left">
 									Medicine
@@ -397,7 +396,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 									}
 								%>
 								<%
-									if (pojo.getMedicineId5() != null) {
+									if (pojo.getMedicineId5() != null && pojo.getQuantity5() != 0) {
 								%>
 								<p class="card-text text-left">
 									Medicine
@@ -413,9 +412,14 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 								<p class="card-text text-left">
 									Other Info:
 									<%=pojo.getOtherInfo()%></p>
-								<p class="card-text text-left">
-									Status:
-									<%=pojo.getStatus()%></p>
+
+								<%if(pojo.getStatus().equals("P")) { %>
+								<p class="card-text text-left">Status: Bill Pending</p>
+
+								<% } else { %>
+								<p class="card-text text-left">Status: Billed</p>
+								<%} %>
+
 							</div>
 						</div>
 

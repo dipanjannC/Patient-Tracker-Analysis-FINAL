@@ -246,7 +246,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 
 
 				<ul class="list-unstyled components">
-					<p>Management</p>
+					<!-- <p>Management</p>
 					<li class="active"><a href="#homeSubmenu"
 						data-toggle="collapse" aria-expanded="false"
 						class="dropdown-toggle">Home</a>
@@ -254,7 +254,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 							<li><a href="#">home1</a></li>
 							<li><a href="#">home2</a></li>
 							<li><a href="#">home3</a></li>
-						</ul></li>
+						</ul></li -->>
 
 					<li><a href="listAllClerk">Clerk</a></li>
 					<li><a href="listAllDoctor">Doctor</a></li>
@@ -324,7 +324,6 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 
 							<%
 								PrescriptionPOJO prescriptionDetails = (PrescriptionPOJO) request.getAttribute("pojo");
-								/* String id = (String) request.getAttribute("id"); */
 							%>
 
 							<form:form action="updatePrescription" method="post"
@@ -351,9 +350,15 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 									<%
 										ArrayList medicineIds = (ArrayList) request.getAttribute("medicineIds");
 												Iterator iterator = medicineIds.iterator();
-
-												while (iterator.hasNext()) {
+									%>
+									<form:option value="<%=prescriptionDetails.getMedicineId1()%>"></form:option>
+									<%
+										while (iterator.hasNext()) {
 													MedicinePOJO pojo = (MedicinePOJO) iterator.next();
+													if (prescriptionDetails.getMedicineId1() != null
+															&& prescriptionDetails.getMedicineId1().equals(pojo.getMedicineId())) {
+														continue;
+													}
 									%>
 									<form:option value="<%=pojo.getMedicineId()%>"><%=pojo.getMedicineId()%></form:option>
 									<%
@@ -361,7 +366,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 									%>
 								</form:select>
 								<hr>
-								<form:input path="quantity1" type="text"
+								<form:input path="quantity1" type="number"
 									value="<%=prescriptionDetails.getQuantity1()%>" min="1"
 									max="10" name="quantity1" placeholder="Medicine1 Quantity"
 									required="required" />
@@ -369,16 +374,19 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 								<form:select path="medicineId2" id="medicineId2"
 									name="medicineId2"
 									value="<%=prescriptionDetails.getMedicineId2()%>"
-									class="form-control" style="background:lavender"
-									required="required">
+									class="form-control" style="background:lavender">
 									<%
 										ArrayList medicineIds = (ArrayList) request.getAttribute("medicineIds");
 												Iterator iterator = medicineIds.iterator();
 									%>
-									<form:option value=""></form:option>
+									<form:option value="<%=prescriptionDetails.getMedicineId2()%>"></form:option>
 									<%
 										while (iterator.hasNext()) {
 													MedicinePOJO pojo = (MedicinePOJO) iterator.next();
+													if (prescriptionDetails.getMedicineId2() != null
+															&& prescriptionDetails.getMedicineId2().equals(pojo.getMedicineId())) {
+														continue;
+													}
 									%>
 									<form:option value="<%=pojo.getMedicineId()%>"><%=pojo.getMedicineId()%></form:option>
 									<%
@@ -386,24 +394,27 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 									%>
 								</form:select>
 								<hr>
-								<form:input path="quantity2" type="text"
+								<form:input path="quantity2" type="number"
 									value="<%=prescriptionDetails.getQuantity2()%>" min="0"
-									max="10" name="quantity2" placeholder="Medicine2 Quantity"
-									required="required" />
+									max="10" name="quantity2" placeholder="Medicine2 Quantity (if any, else type '0' if not required)" />
 								<hr>
 								<form:select path="medicineId3" id="medicineId3"
 									name="medicineId3"
 									value="<%=prescriptionDetails.getMedicineId3()%>"
 									class="form-control" style="background:lavender"
-									required="required">
+									>
 									<%
 										ArrayList medicineIds = (ArrayList) request.getAttribute("medicineIds");
 												Iterator iterator = medicineIds.iterator();
 									%>
-									<form:option value=""></form:option>
+									<form:option value="<%=prescriptionDetails.getMedicineId3()%>"></form:option>
 									<%
 										while (iterator.hasNext()) {
 													MedicinePOJO pojo = (MedicinePOJO) iterator.next();
+													if (prescriptionDetails.getMedicineId3() != null
+															&& prescriptionDetails.getMedicineId3().equals(pojo.getMedicineId())) {
+														continue;
+													}
 									%>
 									<form:option value="<%=pojo.getMedicineId()%>"><%=pojo.getMedicineId()%></form:option>
 									<%
@@ -411,24 +422,27 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 									%>
 								</form:select>
 								<hr>
-								<form:input path="quantity3" type="text"
+								<form:input path="quantity3" type="number"
 									value="<%=prescriptionDetails.getQuantity3()%>" min="0"
-									max="10" name="quantity3" placeholder="Medicine3 Quantity"
-									required="required" />
+									max="10" name="quantity3" placeholder="Medicine3 Quantity (if any, else type '0' if not required)"
+									 />
 								<hr>
 								<form:select path="medicineId4" id="medicineId4"
 									name="medicineId4"
 									value="<%=prescriptionDetails.getMedicineId4()%>"
-									class="form-control" style="background:lavender"
-									required="required">
+									class="form-control" style="background:lavender">
 									<%
 										ArrayList medicineIds = (ArrayList) request.getAttribute("medicineIds");
 												Iterator iterator = medicineIds.iterator();
 									%>
-									<form:option value=""></form:option>
+									<form:option value="<%=prescriptionDetails.getMedicineId4()%>"></form:option>
 									<%
 										while (iterator.hasNext()) {
 													MedicinePOJO pojo = (MedicinePOJO) iterator.next();
+													if (prescriptionDetails.getMedicineId4() != null
+															&& prescriptionDetails.getMedicineId4().equals(pojo.getMedicineId())) {
+														continue;
+													}
 									%>
 									<form:option value="<%=pojo.getMedicineId()%>"><%=pojo.getMedicineId()%></form:option>
 									<%
@@ -436,24 +450,26 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 									%>
 								</form:select>
 								<hr>
-								<form:input path="quantity4" type="text"
+								<form:input path="quantity4" type="number"
 									value="<%=prescriptionDetails.getQuantity4()%>" min="0"
-									max="10" name="quantity4" placeholder="Medicine4 Quantity"
-									required="required" />
+									max="10" name="quantity4" placeholder="Medicine4 Quantity (if any, else type '0' if not required) " />
 								<hr>
 								<form:select path="medicineId5" id="medicineId5"
 									name="medicineId5"
 									value="<%=prescriptionDetails.getMedicineId5()%>"
-									class="form-control" style="background:lavender"
-									required="required">
+									class="form-control" style="background:lavender">
 									<%
 										ArrayList medicineIds = (ArrayList) request.getAttribute("medicineIds");
 												Iterator iterator = medicineIds.iterator();
 									%>
-									<form:option value=""></form:option>
+									<form:option value="<%=prescriptionDetails.getMedicineId5()%>"></form:option>
 									<%
 										while (iterator.hasNext()) {
 													MedicinePOJO pojo = (MedicinePOJO) iterator.next();
+													if (prescriptionDetails.getMedicineId5() != null
+															&& prescriptionDetails.getMedicineId5().equals(pojo.getMedicineId())) {
+														continue;
+													}
 									%>
 									<form:option value="<%=pojo.getMedicineId()%>"><%=pojo.getMedicineId()%></form:option>
 									<%
@@ -461,26 +477,28 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 									%>
 								</form:select>
 								<hr>
-								<form:input path="quantity5" type="text"
+								<form:input path="quantity5" type="number"
 									value="<%=prescriptionDetails.getQuantity5()%>" min="0"
-									max="10" name="quantity5" placeholder="Medicine5 Quantity"
-									required="required" />
+									max="10" name="quantity5" placeholder="Medicine5 Quantity (if any, else type '0' if not required) " />
 								<hr>
 								<form:input path="otherInfo" type="textarea" name="otherInfo"
 									maxlength="25" value="<%=prescriptionDetails.getOtherInfo()%>"
 									placeholder="Other Information" required="required" />
 								<hr>
-								<form:select path="status" id="status" name="status"
+								<%-- 								<form:select path="status" id="status" name="status"
 									class="form-control" style="background:lavender"
 									required="required">
 									<form:option value="P">Bill Pending</form:option>
 									<form:option value="B">Billed</form:option>
-								</form:select>
+								</form:select> --%>
+								<form:input path="status" type="text" name="status"
+									maxlength="10" value="Bill Pending"
+									placeholder="Bill Pending" readonly="true" />
 								<hr>
 								<div align="right">
 									<input type="submit" class="btn btn-project" value="Update"
 										name="add"> <input type="reset" class="btn btn-danger"
-										value="Clear">
+										value="Reset">
 								</div>
 							</form:form>
 						</div>

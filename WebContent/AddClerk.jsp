@@ -239,15 +239,15 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 
 
 			<ul class="list-unstyled components">
-				<p>Management</p>
-				<li class="active"><a href="#homeSubmenu"
+				<!-- <p>Management</p> -->
+				<!-- <li class="active"><a href="#homeSubmenu"
 					data-toggle="collapse" aria-expanded="false"
 					class="dropdown-toggle">Home</a>
 					<ul class="collapse list-unstyled" id="homeSubmenu">
 						<li><a href="#">home1</a></li>
 						<li><a href="#">home2</a></li>
 						<li><a href="#">home3</a></li>
-					</ul></li>
+					</ul></li> -->
 
 				<li><a href="listAllClerk">Clerk</a></li>
 				<li><a href="listAllDoctor">Doctor</a></li>
@@ -386,7 +386,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 								<div align="right">
 									<input type="submit" class="btn btn-project" value="Add"
 										name="add"> <input type="reset" class="btn btn-danger"
-										value="Clear">
+										value="Reset">
 								</div>
 							</form:form>
 						</div>

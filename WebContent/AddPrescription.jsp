@@ -246,7 +246,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 
 
 				<ul class="list-unstyled components">
-					<p>Management</p>
+				<!-- 	<p>Management</p>
 					<li class="active"><a href="#homeSubmenu"
 						data-toggle="collapse" aria-expanded="false"
 						class="dropdown-toggle">Home</a>
@@ -254,7 +254,7 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 							<li><a href="#">home1</a></li>
 							<li><a href="#">home2</a></li>
 							<li><a href="#">home3</a></li>
-						</ul></li>
+						</ul></li> -->
 
 					<li><a href="listAllClerk">Clerk</a></li>
 					<li><a href="listAllDoctor">Doctor</a></li>
@@ -398,8 +398,8 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 								</form:select>
 								<hr>
 								<form:input path="quantity2" type="number"
-									placeholder="Enter Medicine2 Quantity" min="0" max="10"
-									name="quantity2"/>
+									placeholder="Medicine2 Quantity (if any, else type '0' if not required) " min="0" max="10"
+									name="quantity2" />
 								<hr>
 								<form:select path="medicineId3" id="medicineId3"
 									name="medicineId3" class="form-control"
@@ -420,8 +420,8 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 								</form:select>
 								<hr>
 								<form:input path="quantity3" type="number"
-									placeholder="Enter Medicine3 Quantity" min="0" max="10"
-									name="quantity3"/>
+									placeholder="Medicine3 Quantity (if any, else type '0' if not required) " min="0" max="10"
+									name="quantity3" />
 								<hr>
 								<form:select path="medicineId4" id="medicineId4"
 									name="medicineId4" class="form-control"
@@ -442,8 +442,8 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 								</form:select>
 								<hr>
 								<form:input path="quantity4" type="number"
-									placeholder="Enter Medicine4 Quantity" min="0" max="10"
-									name="quantity4"/>
+									placeholder="Medicine4 Quantity (if any, else type '0' if not required) " min="0" max="10"
+									name="quantity4" />
 								<hr>
 								<form:select path="medicineId5" id="medicineId5"
 									name="medicineId5" class="form-control"
@@ -464,24 +464,27 @@ input[type=text], input[type=number], input[type=textarea], input[type=date],
 								</form:select>
 								<hr>
 								<form:input path="quantity5" type="number"
-									placeholder="Enter Medicine5 Quantity" min="0" max="10"
-									name="quantity5"/>
+									placeholder="Medicine5 Quantity (if any, else type '0' if not required) " min="0" max="10"
+									name="quantity5" />
 								<hr>
 								<form:input path="otherInfo" type="textarea" name="otherInfo"
 									maxlength="25" placeholder="Other Information"
 									required="required" />
 								<hr>
-								<form:select path="status" id="status" name="status"
+								<%-- 								<form:select path="status" id="status" name="status"
 									class="form-control" style="background:lavender"
 									required="required">
 									<form:option value="P">Bill Pending</form:option>
 									<form:option value="B">Billed</form:option>
-								</form:select>
+								</form:select> --%>
+								<form:input path="status" type="text" name="status"
+									maxlength="10" value="Bill Pending" placeholder="Bill Pending"
+									readonly="true" />
 								<hr>
 								<div align="right">
 									<input type="submit" class="btn btn-project" value="Add"
 										name="add"> <input type="reset" class="btn btn-danger"
-										value="Clear">
+										value="Reset">
 								</div>
 							</form:form>
 						</div>
